@@ -1,6 +1,6 @@
 # metabolic-care-urls
 
-Public legal &amp; support site for the **Metabolic Care** app, served via GitHub Pages.
+Public legal &amp; support site for the **Krestrel** app (formerly Metabolic Care), served via GitHub Pages.
 These are the URLs Apple App Review and Google Play require (Privacy Policy + Support),
 plus supporting pages.
 

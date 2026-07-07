@@ -120,7 +120,8 @@ main.wrap { padding-top: 34px; padding-bottom: 60px; }
   padding: 60px 22px;
 }
 .hero .wrap { padding: 0; max-width: var(--max); margin: 0 auto; }
-.hero h1 { font-size: 36px; margin: 0 0 12px; letter-spacing: -0.02em; font-weight: 800; color: var(--hero-fg); }
+.hero h1 { font-size: 36px; margin: 0 0 6px; letter-spacing: -0.02em; font-weight: 800; color: var(--hero-fg); }
+.hero .tagline { font-size: 20px; font-weight: 700; opacity: 0.96; margin: 0 0 14px; max-width: 560px; }
 .hero p { font-size: 18px; opacity: 0.94; margin: 0; max-width: 560px; }
 
 h1 { font-size: 31px; letter-spacing: -0.02em; margin: 0 0 6px; font-weight: 800; }

@@ -1,6 +1,6 @@
 # App Store Connect — copy/paste submission reference
 
-Everything to paste into **App Store Connect** for Metabolic Care, kept next to the legal
+Everything to paste into **App Store Connect** for Krestrel, kept next to the legal
 site so the URLs and disclosures stay in sync. See the app repo's
 `docs/APP_STORE_CHECKLIST.md` for the code/Supabase side.
 
@@ -25,7 +25,7 @@ All data is **linked to the user's identity**, **none used for tracking**, all f
 
 ## App Review Information → Notes
 
-> Metabolic Care is a direct-to-consumer caregiver tool. A parent/legal guardian tracks
+> Krestrel is a direct-to-consumer caregiver tool. A parent/legal guardian tracks
 > their own child's metabolic diet and care (growth, labs, medications, adverse events such
 > as seizures, meals, appointments, photos, notes). At sign-up the user must confirm they are
 > the parent/legal guardian, are 18+, and agree to the Privacy Policy before any data is
