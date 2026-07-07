@@ -41,6 +41,33 @@ The site will move to **krestrel.com**. When ready:
 
 Until then the pages are served from the `github.io` URLs listed above.
 
+## App / Universal Links (invite deep linking)
+
+These files let invite links open the app directly instead of the browser:
+
+| File | Platform | Purpose |
+|---|---|---|
+| `.well-known/apple-app-site-association` | iOS | Associates `www.krestrel.com` with the app (`K9B98RPW3T.com.metaboliccare.app`) for the `/invite/accept` path. Served extensionless. |
+| `.well-known/assetlinks.json` | Android | Verifies the app (`com.metaboliccare.app`) for the domain. **Replace `REPLACE_WITH_SHA256_FINGERPRINT`** with the app-signing SHA-256 from `eas credentials -p android` (or Play Console → App integrity → App signing key certificate). |
+| `invite/accept/index.html` | Web fallback | Shown to visitors **without** the app installed (universal links only open the app when it's present). Offers copy-link / open-in-app and paste instructions. |
+
+The operative host is **`www.krestrel.com`** (this repo's `CNAME`). The app side is
+configured in the app repo's `app.json` (`ios.associatedDomains: applinks:www.krestrel.com`
+and an auto-verified Android intent filter for `www.krestrel.com/invite/accept`); those
+are native changes that need a new EAS build to take effect. Invite emails switch to the
+tappable `https://www.krestrel.com/invite/accept?token=…` link once the `send-invite-email`
+edge function has `APP_URL=https://www.krestrel.com` set.
+
+Verify after deploy (must be `200`, JSON, no redirect):
+
+```
+curl -i https://www.krestrel.com/.well-known/apple-app-site-association
+curl -i https://www.krestrel.com/.well-known/assetlinks.json
+```
+
+Apple's CDN caches the association for up to ~24 h; check it at
+`https://app-site-association.cdn-apple.com/a/v1/www.krestrel.com`.
+
 ## Editing
 
 Plain static HTML — no build step. Shared styles live in `assets/style.css`.

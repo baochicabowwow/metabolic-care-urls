@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Metabolic Care — Circle invitation</title>
+  <meta name="description" content="Accept your invitation to a Metabolic Care circle." />
+  <link rel="stylesheet" href="../../assets/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="../../"><span class="logo">🍃</span> Metabolic Care</a>
+      <nav>
+        <a href="../../privacy/">Privacy</a>
+        <a href="../../terms/">Terms</a>
+        <a href="../../support/">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div id="valid" hidden>
+      <h1>You're invited</h1>
+      <p>Someone invited you to join their circle on <strong>Metabolic Care</strong>.
+         If the app is installed, this page normally opens it automatically. If you're
+         still here, use one of the options below.</p>
+
+      <div class="card">
+        <a id="open-app" class="btn" href="#">Open in the app</a>
+        <button id="copy" class="btn secondary" type="button">Copy invite link</button>
+        <p id="copied" class="updated" role="status" style="min-height:18px;margin-top:10px"></p>
+      </div>
+
+      <h3>Don't have the app yet?</h3>
+      <ol>
+        <li>Install <strong>Metabolic Care</strong> from the App&nbsp;Store or Google&nbsp;Play.</li>
+        <li>Open it and, on the sign-in screen (or in Settings), tap
+            <strong>&ldquo;Have an invite? Enter it here&rdquo;</strong>.</li>
+        <li>Paste the invite link you copied above and continue.</li>
+      </ol>
+
+      <div class="callout">
+        Use the same email address your invitation was sent to — the app matches your
+        invite to that address.
+      </div>
+    </div>
+
+    <div id="invalid" hidden>
+      <h1>Invitation link problem</h1>
+      <p>This link is missing its invitation code, so we can't open your invite.
+         Ask the person who invited you to send a fresh invite from the app
+         (<strong>Settings → Circle members</strong>).</p>
+      <p><a class="btn" href="../../support/">Get support</a></p>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <nav>
+        <a href="../../privacy/">Privacy</a>
+        <a href="../../terms/">Terms</a>
+        <a href="../../support/">Support</a>
+      </nav>
+      <span class="copy">© 2026 Metabolic Care</span>
+    </div>
+  </footer>
+
+  <script>
+    // circle_invites.token is 32 random bytes hex-encoded — the same shape the
+    // app's parseInviteToken accepts. Anything else gets the broken-link card.
+    var match = /[?&]token=([0-9a-fA-F]{64})(?![0-9a-fA-F])/.exec(location.search);
+    var token = match && match[1].toLowerCase();
+
+    document.getElementById(token ? 'valid' : 'invalid').hidden = false;
+
+    if (token) {
+      var appLink = 'metabolic-care://invite/accept?token=' + token;
+      var webLink = 'https://www.krestrel.com/invite/accept?token=' + token;
+      document.getElementById('open-app').setAttribute('href', appLink);
+      document.getElementById('copy').addEventListener('click', function () {
+        var done = function () {
+          document.getElementById('copied').textContent = 'Copied — now paste it in the app.';
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(webLink).then(done, function () { window.prompt('Copy this link:', webLink); });
+        } else {
+          window.prompt('Copy this link:', webLink);
+        }
+      });
+    }
+  </script>
+</body>
+</html>

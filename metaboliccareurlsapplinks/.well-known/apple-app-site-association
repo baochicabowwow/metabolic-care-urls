@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["K9B98RPW3T.com.metaboliccare.app"],
+        "components": [
+          { "/": "/invite/accept", "comment": "care-circle invite links" }
+        ]
+      }
+    ]
+  }
+}
