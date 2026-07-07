@@ -1,63 +1,66 @@
-/* Theme mirrors the Metabolic Care app (src/components/ui/theme.ts):
-   Nunito rounded font, soft leaf-green brand, warm apricot/coral accents,
-   cream surfaces, rounded corners, and an automatic dark "deep forest" mode. */
+/* Theme mirrors the Metabolic Care ("Krestrel") app palette
+   "Kestrel at dawn" (src/components/ui/theme.ts, docs/BRANDING.md):
+   Nunito rounded font, slate-blue kestrel brand, amber + warm-rust accents,
+   cream surfaces, rounded corners, and an automatic deep-slate dark mode.
+   Interactive slate uses the app's primaryDark (#4E6E8C) so links and
+   white-on-brand buttons clear WCAG AA on the cream background. */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
 
 :root {
-  /* Brand — soft leaf green */
-  --brand: #2F9E6F;
-  --brand-dark: #1F7A54;
-  --brand-light: #E3F4EC;
-  /* Warm accents */
-  --accent: #FFB26B;
-  --secondary: #FF8A65;
+  /* Brand — slate sky (the kestrel's blue-grey wings) */
+  --brand: #4E6E8C;
+  --brand-dark: #3F5A73;
+  --brand-light: #E9EFF5;
+  /* Warm accents — amber beak/feet + warm-rust back */
+  --accent: #F0A95C;
+  --secondary: #E8896B;
   /* Semantics */
   --warn: #E8943A;
   --warn-light: #FDF0E1;
   /* Neutrals — warm, on cream */
-  --ink: #1F3D2F;
-  --muted: #5C6B62;
-  --muted-2: #94A39A;
+  --ink: #2E3D4F;
+  --muted: #5E6B78;
+  --muted-2: #93A0AC;
   --line: #EFE7DD;
-  --bg: #FFF9F3;
+  --bg: #FBF6EF;
   --card: #FFFFFF;
-  --surface-alt: #FBF3EA;
+  --surface-alt: #F7EFE4;
   /* Component tokens */
-  --header-bg: #2F9E6F;
+  --header-bg: #4E6E8C;
   --header-fg: #FFFFFF;
-  --hero-from: #34A877;
-  --hero-to: #268A5E;
+  --hero-from: #6A8DAA;
+  --hero-to: #4E6E8C;
   --hero-fg: #FFFFFF;
-  --btn-bg: #2F9E6F;
-  --btn-bg-hover: #1F7A54;
+  --btn-bg: #4E6E8C;
+  --btn-bg-hover: #3F5A73;
   --btn-fg: #FFFFFF;
-  --shadow: 0 6px 16px rgba(122, 92, 62, 0.10);
+  --shadow: 0 6px 16px rgba(74, 90, 110, 0.12);
   --max: 760px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --brand: #4DC48D;
-    --brand-dark: #3DAE79;
-    --brand-light: #1B3D2B;
-    --accent: #FFB26B;
-    --secondary: #FF8A65;
+    --brand: #8FB0CB;
+    --brand-dark: #7E9DB8;
+    --brand-light: #22364A;
+    --accent: #F0A95C;
+    --secondary: #E8896B;
     --warn: #E8943A;
     --warn-light: #3D2510;
-    --ink: #EDF7F2;
-    --muted: #94BCA8;
-    --muted-2: #556B5E;
-    --line: #243D2E;
-    --bg: #0D1F17;
-    --card: #152A1F;
-    --surface-alt: #1A3228;
-    --header-bg: #14261C;
-    --header-fg: #EDF7F2;
-    --hero-from: #1F7A54;
-    --hero-to: #14261C;
-    --hero-fg: #EDF7F2;
-    --btn-bg: #2F9E6F;
-    --btn-bg-hover: #3DAE79;
+    --ink: #EFF3F7;
+    --muted: #9FB4C6;
+    --muted-2: #8A9DB0;
+    --line: #263647;
+    --bg: #101923;
+    --card: #18242F;
+    --surface-alt: #1D2B38;
+    --header-bg: #18242F;
+    --header-fg: #EFF3F7;
+    --hero-from: #274056;
+    --hero-to: #101923;
+    --hero-fg: #EFF3F7;
+    --btn-bg: #4E6E8C;
+    --btn-bg-hover: #5B7C99;
     --btn-fg: #FFFFFF;
     --shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   }
