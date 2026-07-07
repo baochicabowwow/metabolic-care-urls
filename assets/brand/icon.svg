@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Krestrel bird holding a feather">
+  <!-- Krestrel app mark: the soft-gaze chick holding the prism feather like a quill.
+       Mirrors the Metabolic Care app launcher icon (assets/icon.png). -->
+  <rect width="1024" height="1024" rx="224" fill="#FBF6EF"/>
+
+  <!-- soft ground shadow -->
+  <ellipse cx="512" cy="712" rx="200" ry="28" fill="#F0E6D4"/>
+
+  <!-- left stubby wing (tucked) -->
+  <ellipse cx="368" cy="470" rx="42" ry="74" fill="#4E6E8C" transform="rotate(20 368 470)"/>
+
+  <!-- chick, tilted a touch -->
+  <g transform="rotate(4 512 560)">
+    <circle cx="512" cy="480" r="178" fill="#5B7C99"/>
+
+    <!-- head tuft -->
+    <path d="M 494 307 Q 506 269 530 265" fill="none" stroke="#4E6E8C" stroke-width="17" stroke-linecap="round"/>
+
+    <!-- wide face patch -->
+    <ellipse cx="512" cy="497" rx="146" ry="106" fill="#FAF1E4"/>
+
+    <!-- small calm eyes -->
+    <ellipse cx="474" cy="487" rx="15" ry="22" fill="#2E3D4F"/>
+    <ellipse cx="550" cy="487" rx="15" ry="22" fill="#2E3D4F"/>
+
+    <!-- blush -->
+    <circle cx="424" cy="533" r="23" fill="#F2A98F" opacity="0.55"/>
+    <circle cx="600" cy="533" r="23" fill="#F2A98F" opacity="0.55"/>
+
+    <!-- beak -->
+    <path d="M 490 525 Q 512 513 534 525 Q 521 557 512 560 Q 503 557 490 525 Z" fill="#F0A95C"/>
+
+    <!-- coral chest -->
+    <path d="M 438 623 Q 512 667 586 623 Q 560 659 512 661 Q 464 659 438 623 Z" fill="#E8896B"/>
+  </g>
+
+  <!-- feet -->
+  <rect x="448" y="668" width="48" height="22" rx="11" fill="#F0A95C" transform="rotate(-3 472 679)"/>
+  <rect x="526" y="674" width="48" height="22" rx="11" fill="#F0A95C" transform="rotate(4 550 685)"/>
+
+  <!-- the prism feather, held upright at the chick's side -->
+  <g transform="translate(322 40) scale(0.62)">
+    <g transform="rotate(18 512 512)">
+      <defs>
+        <clipPath id="vane">
+          <path d="M 512 140 C 594 252 642 420 622 562 C 608 664 562 706 512 712 C 462 706 416 664 402 562 C 382 420 430 252 512 140 Z"/>
+        </clipPath>
+      </defs>
+      <path d="M 512 140 C 594 252 642 420 622 562 C 608 664 562 706 512 712 C 462 706 416 664 402 562 C 382 420 430 252 512 140 Z" fill="#FFFFFF"/>
+      <g clip-path="url(#vane)">
+        <path d="M 280 156 L 760 -4 L 760 136 L 280 296 Z" fill="#5B7C99"/>
+        <path d="M 280 308 L 760 148 L 760 288 L 280 448 Z" fill="#7E9DB8"/>
+        <path d="M 280 460 L 760 300 L 760 440 L 280 600 Z" fill="#9FD8CB"/>
+        <path d="M 280 612 L 760 452 L 760 632 L 280 792 Z" fill="#E8896B"/>
+      </g>
+      <path d="M 512 176 L 512 700 L 512 908" fill="none" stroke="#2E3D4F" stroke-width="17" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- right wing gripping the feather shaft -->
+  <ellipse cx="648" cy="520" rx="44" ry="80" fill="#4E6E8C" transform="rotate(-34 648 520)"/>
+</svg>

@@ -98,10 +98,10 @@ header.site .brand {
 }
 header.site .logo {
   width: 32px; height: 32px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.18);
-  display: grid; place-items: center;
-  font-size: 16px;
+  border-radius: 9px;
+  display: block;
+  flex: 0 0 auto;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14);
 }
 header.site nav { margin-left: auto; display: flex; gap: 18px; font-size: 15px; flex-wrap: wrap; }
 header.site nav a { opacity: 0.92; font-weight: 700; }
