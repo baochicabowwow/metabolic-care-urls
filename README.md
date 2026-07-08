@@ -68,6 +68,24 @@ curl -i https://www.krestrel.com/.well-known/assetlinks.json
 Apple's CDN caches the association for up to ~24 h; check it at
 `https://app-site-association.cdn-apple.com/a/v1/www.krestrel.com`.
 
+## Brand assets
+
+`assets/brand/` holds the Krestrel mark — the "feather holder" chick from the app's
+`assets/branding/concept-4c-feather-holder.svg`. The glyph is scaled about the canvas
+centre so it fills the frame instead of floating in whitespace, matching the app's
+`scripts/generate-icons.mjs`:
+
+| File | Size | Glyph coverage |
+|---|---|---|
+| `icon.svg` | vector | 86% — header logo + SVG favicon |
+| `web-icon-512.png` | 512 | 86% — PWA / social |
+| `apple-touch-icon.png` | 180 | 86% — iOS home screen |
+| `favicon-32.png` / `favicon-16.png` | 32 / 16 | 90% — fill harder so the mark reads |
+
+Backgrounds are full-bleed cream (`#FBF6EF`), square on purpose: iOS masks the corners
+and the site rounds the header logo via CSS. To regenerate after the mascot changes, run
+the app repo's `node scripts/generate-icons.mjs` math against the same source SVG.
+
 ## Editing
 
 Plain static HTML — no build step. Shared styles live in `assets/style.css`.

@@ -1,7 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Krestrel bird holding a feather">
-  <!-- Krestrel app mark: the soft-gaze chick holding the prism feather like a quill.
-       Mirrors the Metabolic Care app launcher icon (assets/icon.png). -->
-  <rect width="1024" height="1024" rx="224" fill="#FBF6EF"/>
+  <!-- Krestrel app mark (concept 4c "feather holder"), glyph scaled to 86% coverage
+       to match the app launcher icon. Generated to mirror the app's scripts/generate-icons.mjs. -->
+  <rect width="1024" height="1024" fill="#FBF6EF"/><g transform="translate(512 512) scale(1.37749) translate(-598.268 -420.346)"><!-- Krestrel — Concept 4c "Feather Holder": the soft-gaze chick from 4b holding
+       the prism feather from concept 2 like a quill, ready to log the day. -->
+  
 
   <!-- soft ground shadow -->
   <ellipse cx="512" cy="712" rx="200" ry="28" fill="#F0E6D4"/>
@@ -19,7 +21,7 @@
     <!-- wide face patch -->
     <ellipse cx="512" cy="497" rx="146" ry="106" fill="#FAF1E4"/>
 
-    <!-- small calm eyes -->
+    <!-- small calm eyes: flat ink ovals, no highlights -->
     <ellipse cx="474" cy="487" rx="15" ry="22" fill="#2E3D4F"/>
     <ellipse cx="550" cy="487" rx="15" ry="22" fill="#2E3D4F"/>
 
@@ -38,16 +40,16 @@
   <rect x="448" y="668" width="48" height="22" rx="11" fill="#F0A95C" transform="rotate(-3 472 679)"/>
   <rect x="526" y="674" width="48" height="22" rx="11" fill="#F0A95C" transform="rotate(4 550 685)"/>
 
-  <!-- the prism feather, held upright at the chick's side -->
+  <!-- the prism feather (concept 2), held upright at the chick's side -->
   <g transform="translate(322 40) scale(0.62)">
     <g transform="rotate(18 512 512)">
       <defs>
-        <clipPath id="vane">
+        <clipPath id="vane4c">
           <path d="M 512 140 C 594 252 642 420 622 562 C 608 664 562 706 512 712 C 462 706 416 664 402 562 C 382 420 430 252 512 140 Z"/>
         </clipPath>
       </defs>
       <path d="M 512 140 C 594 252 642 420 622 562 C 608 664 562 706 512 712 C 462 706 416 664 402 562 C 382 420 430 252 512 140 Z" fill="#FFFFFF"/>
-      <g clip-path="url(#vane)">
+      <g clip-path="url(#vane4c)">
         <path d="M 280 156 L 760 -4 L 760 136 L 280 296 Z" fill="#5B7C99"/>
         <path d="M 280 308 L 760 148 L 760 288 L 280 448 Z" fill="#7E9DB8"/>
         <path d="M 280 460 L 760 300 L 760 440 L 280 600 Z" fill="#9FD8CB"/>
@@ -58,5 +60,4 @@
   </g>
 
   <!-- right wing gripping the feather shaft -->
-  <ellipse cx="648" cy="520" rx="44" ry="80" fill="#4E6E8C" transform="rotate(-34 648 520)"/>
-</svg>
+  <ellipse cx="648" cy="520" rx="44" ry="80" fill="#4E6E8C" transform="rotate(-34 648 520)"/></g></svg>
