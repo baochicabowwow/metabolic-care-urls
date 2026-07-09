@@ -46,10 +46,59 @@ All data is **linked to the user's identity**, **none used for tracking**, all f
 
 ## Store listing
 
-- **Category:** Medical (or Health &amp; Fitness)
-- **Age rating:** complete the questionnaire; medical/treatment info → typically 17+
-- **Screenshots:** 6.7" and 6.5" iPhone (and iPad if `supportsTablet` stays true)
+- **Category:** Health &amp; Fitness (primary) — accurate for a diet/care journal and avoids
+  the extra scrutiny of the Medical category
+- **Age rating:** complete the current questionnaire honestly (declare medical/wellness
+  topics where true) and accept whatever rating it produces
+- **Screenshots:** one iPhone set (6.9" or 6.5") **and** an iPad 13" set while
+  `supportsTablet` stays true
 - **Encryption:** `ITSAppUsesNonExemptEncryption = false` (already in `app.json`)
+
+### Name (Localizable Information)
+
+```
+Krestrel
+```
+
+### Subtitle (Localizable Information, 30-char limit)
+
+```
+Metabolic diet & care tracker
+```
+
+### Keywords (100-char limit, comma-separated)
+
+```
+metabolic,lysine,rare disease,caregiver,diet log,PDE,food diary,care circle,baby tracker
+```
+
+Don't repeat words already in the name or subtitle — Apple ignores duplicates.
+
+### Description
+
+```
+Krestrel is a record-keeping tool for parents and legal guardians of children with metabolic conditions.
+
+LOG MEALS AND NUTRIENTS
+Record what your child eats. Krestrel calculates per-meal and daily nutrient totals from USDA FoodData Central reference values and shows them alongside the limits you enter from your child's care team. Krestrel does not suggest, set, or adjust any limit.
+
+TRACK DAILY CARE
+Feeding, sleep, diapers, medications given, growth measurements, milestones, appointments, and health-log entries, in one timeline your whole care circle shares.
+
+RECORD LAB RESULTS
+Enter bloodwork values and the reference range your clinician provides, and view them on a trend chart.
+
+SHARE WITH YOUR CARE CIRCLE
+Invite the other parent, family, or caregivers with per-person permissions.
+
+PRIVATE BY DESIGN
+No ads, no third-party analytics, no tracking. Your data is used only to run the features you use, and you can permanently delete your account and all data in Settings.
+
+Krestrel is not a medical device and does not provide medical advice, diagnosis, or treatment. Nutrient figures are general references that may not match a specific product — always confirm values and your child's limits with your metabolic dietitian.
+```
+
+Every sentence above is verifiable against the app — keep it that way when editing:
+no outcome promises, no "safe" / "accurate" / "precision" claims.
 
 ## Guidelines this submission satisfies
 
