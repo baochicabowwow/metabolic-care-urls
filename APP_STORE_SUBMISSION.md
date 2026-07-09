@@ -17,11 +17,31 @@ All data is **linked to the user's identity**, **none used for tracking**, all f
 
 | Data type | Collected | Linked | Tracking | Purpose |
 |---|---|---|---|---|
-| Health &amp; Fitness (child diet, labs, seizures/adverse events, meds, growth) | Yes | Yes | No | App Functionality |
-| Contact Info (caregiver name, email) | Yes | Yes | No | App Functionality |
-| User Content (photos, notes) | Yes | Yes | No | App Functionality |
-| Identifiers (account / user ID) | Yes | Yes | No | App Functionality |
-| Diagnostics, Usage Data, Advertising, Location, Purchases | **No** | — | — | — |
+| Health (child diet, labs, seizures/adverse events, meds, growth) | Yes | Yes | No | App Functionality |
+| Contact Info — Name (caregiver + child) | Yes | Yes | No | App Functionality |
+| Contact Info — Email (caregiver + invited caregivers) | Yes | Yes | No | App Functionality |
+| Contact Info — Phone Number (emergency-plan contacts) | Yes | Yes | No | App Functionality |
+| User Content — Other (free-text notes) | Yes | Yes | No | App Functionality |
+| Identifiers — User ID (account / user ID) | Yes | Yes | No | App Functionality |
+| Everything else (Fitness, Financial, Location, Sensitive Info, Contacts, Photos/Videos, Audio, Device ID, Purchases, Usage Data, Diagnostics, Advertising) | **No** | — | — | — |
+
+**Notes on specific rows:**
+
+- **Phone Number** is collected because the emergency-plan feature stores contact phone
+  numbers (`app/(app)/emergency/edit.tsx`). Declare it even though it is contact info for
+  third parties (doctors/family) the caregiver enters — the app still stores phone-number data.
+- **Photos or Videos** is **excluded** because the photo-sharing feature is flag-gated off in
+  production (`photoSharing: false`; `EXPO_PUBLIC_FEATURE_PHOTO_SHARING` is not set in the
+  `eas.json` production profile), so no images are uploaded. Profile avatars are initials, not
+  photos. **If you ever ship with the photo flag on, add Photos or Videos here** — and note the
+  build still requests camera/photo-library permissions, so decide whether to strip those for a
+  photos-off release (2.5.x unused-permission risk).
+- **Sensitive Info** is **excluded**: metabolic conditions (PDE/PKU, etc.) are declared under
+  **Health**, per Apple's guidance that Health covers "any other user-provided health or medical
+  data." The Sensitive Info "genetic information" bucket means DNA/genetic-test data, not a
+  diagnosis name. Revisit with counsel if you want to be maximally conservative.
+- For **every** collected row: **Linked to identity = Yes, Used for tracking = No, Purpose =
+  App Functionality only.**
 
 ## App Review Information → Notes
 
