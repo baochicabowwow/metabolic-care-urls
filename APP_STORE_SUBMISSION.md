@@ -47,7 +47,7 @@ All data is **linked to the user's identity**, **none used for tracking**, all f
 
 > Krestrel is a direct-to-consumer caregiver tool. A parent/legal guardian tracks
 > their own child's metabolic diet and care (growth, labs, medications, adverse events such
-> as seizures, meals, appointments, photos, notes). At sign-up the user must confirm they are
+> as seizures, meals, appointments, notes). At sign-up the user must confirm they are
 > the parent/legal guardian, are 18+, and agree to the Privacy Policy before any data is
 > collected. Nutrient values are USDA references shown with an in-app "not medical advice"
 > disclaimer; the app provides no diagnosis. The app uses **no HealthKit/CareKit**, contains
@@ -126,4 +126,6 @@ no outcome promises, no "safe" / "accurate" / "precision" claims.
 - **5.1.3** no HealthKit/CareKit; health data never used for ads/marketing
 - **1.4.1 / medical** USDA references + visible "not medical advice" disclaimer
 - **2.1** working seeded demo account
-- **2.5.x** only requests permissions used (camera + photos; microphone removed)
+- **2.5.x** requests no camera/photo/microphone permissions in v1 — photo sharing is
+  flag-gated off and its native module is excluded from the build (re-add the permissions
+  when the feature ships)
