@@ -27,12 +27,14 @@
 
   <main class="wrap">
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: July 1, 2026 &nbsp;·&nbsp; Effective: July 1, 2026</p>
+    <p class="updated">Last updated: July 13, 2026 &nbsp;·&nbsp; Effective: July 13, 2026</p>
 
     <div class="callout">
       <strong>The short version.</strong> Krestrel is a private tracker for caregivers.
       We collect the child-care information you enter so the app can work for you. We store it
-      securely with our hosting provider (Supabase) in the United States. We do
+      securely with our hosting provider (Supabase) in the United States. If the app crashes,
+      an anonymous technical crash report (never your health records or identity) is sent to our
+      error-reporting provider (Sentry) so we can fix the bug. We do
       <strong>not</strong> sell your data, show ads, or use third-party tracking. You can export
       or permanently delete your account and data from inside the app at any time.
     </div>
@@ -65,8 +67,9 @@
 
     <h2 id="collect">2. Information we collect</h2>
     <p>We only collect information you (or a caregiver you invite) actively provide, plus the minimum
-      technical information required to operate a secure account. We do <strong>not</strong> collect
-      location, contacts, advertising identifiers, or device analytics.</p>
+      technical information required to operate a secure account and keep the app working (crash
+      reports, described below). We do <strong>not</strong> collect location, contacts, advertising
+      identifiers, or behavioral analytics.</p>
 
     <h3>Caregiver account information</h3>
     <ul>
@@ -99,6 +102,11 @@
     <ul>
       <li>Standard account and security data required to keep you signed in and to protect the account
         (such as timestamps for records you create).</li>
+      <li><strong>Crash reports</strong> — if the app encounters an error, a technical report (the error
+        and stack trace, app version, device model, and operating-system version) is sent to our
+        error-reporting provider so we can find and fix the bug. Crash reports are configured to
+        <strong>exclude</strong> your name, email, account identifier, and the health records you enter —
+        they are not linked to your identity and are used for nothing except fixing defects.</li>
     </ul>
 
     <h2 id="children">3. Children's data &amp; who may use the app</h2>
@@ -141,6 +149,13 @@
           <td>United States</td>
         </tr>
         <tr>
+          <td>Sentry</td>
+          <td>Error and crash reporting (app diagnostics)</td>
+          <td>Anonymous technical crash reports only: error/stack trace, app version, device model,
+            OS version. No health records, names, emails, or account identifiers.</td>
+          <td>United States</td>
+        </tr>
+        <tr>
           <td>Resend</td>
           <td>Delivery of care-circle invitation emails</td>
           <td>Recipient email address and invitation content</td>
@@ -165,7 +180,9 @@
       <li>The app contains <strong>no advertising SDKs</strong>.</li>
       <li>The app performs <strong>no cross-app or cross-site tracking</strong> and requests no App Tracking
         Transparency permission (its privacy manifest declares tracking = false).</li>
-      <li>We do <strong>not</strong> use third-party analytics on health data.</li>
+      <li>We do <strong>not</strong> use third-party analytics on health data. The only diagnostics we
+        collect are the anonymous crash reports described above — they contain technical error details,
+        never your health entries or identity, and are used only to fix bugs.</li>
       <li>We do <strong>not</strong> sell your personal information or share it for cross-context behavioral
         advertising, and we never use your child's health data for advertising or marketing.</li>
     </ul>

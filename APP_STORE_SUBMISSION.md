@@ -13,7 +13,8 @@ site so the URLs and disclosures stay in sync. See the app repo's
 
 ## App Privacy ("nutrition labels")
 
-All data is **linked to the user's identity**, **none used for tracking**, all for **App Functionality**.
+All user-entered data is **linked to the user's identity**; crash data is **not linked**;
+**nothing is used for tracking**; everything is for **App Functionality**.
 
 | Data type | Collected | Linked | Tracking | Purpose |
 |---|---|---|---|---|
@@ -23,9 +24,18 @@ All data is **linked to the user's identity**, **none used for tracking**, all f
 | Contact Info — Phone Number (emergency-plan contacts) | Yes | Yes | No | App Functionality |
 | User Content — Other (free-text notes) | Yes | Yes | No | App Functionality |
 | Identifiers — User ID (account / user ID) | Yes | Yes | No | App Functionality |
-| Everything else (Fitness, Financial, Location, Sensitive Info, Contacts, Photos/Videos, Audio, Device ID, Purchases, Usage Data, Diagnostics, Advertising) | **No** | — | — | — |
+| Diagnostics — Crash Data (Sentry crash reports) | Yes | **No** | No | App Functionality |
+| Everything else (Fitness, Financial, Location, Sensitive Info, Contacts, Photos/Videos, Audio, Device ID, Purchases, Usage Data, Diagnostics — Performance/Other, Advertising) | **No** | — | — | — |
 
 **Notes on specific rows:**
+
+- **Diagnostics — Crash Data** is collected via Sentry (crash reporting only; no tracing, replay,
+  or screenshots). Declare it **Not linked to identity**: the app's Sentry config
+  (`src/lib/sentry.ts` in the app repo) strips the user object, drops console breadcrumbs, and
+  removes URL query strings before anything is sent. **If a user id/email is ever attached to
+  Sentry events, flip this row to Linked = Yes.** Add **Performance Data** only if tracing is
+  turned on (`tracesSampleRate` > 0). This is diagnostics, not "tracking" — the privacy
+  manifest's `NSPrivacyTracking` stays `false`.
 
 - **Phone Number** is collected because the emergency-plan feature stores contact phone
   numbers (`app/(app)/emergency/edit.tsx`). Declare it even though it is contact info for
@@ -40,8 +50,8 @@ All data is **linked to the user's identity**, **none used for tracking**, all f
   **Health**, per Apple's guidance that Health covers "any other user-provided health or medical
   data." The Sensitive Info "genetic information" bucket means DNA/genetic-test data, not a
   diagnosis name. Revisit with counsel if you want to be maximally conservative.
-- For **every** collected row: **Linked to identity = Yes, Used for tracking = No, Purpose =
-  App Functionality only.**
+- For **every** collected row except Crash Data: **Linked to identity = Yes, Used for tracking =
+  No, Purpose = App Functionality only.** Crash Data is the one **Not linked** row.
 
 ## App Review Information → Notes
 
@@ -52,7 +62,9 @@ All data is **linked to the user's identity**, **none used for tracking**, all f
 > collected. Nutrient values are USDA references shown with an in-app "not medical advice"
 > disclaimer; the app provides no diagnosis. The app uses **no HealthKit/CareKit**, contains
 > no advertising or third-party analytics, and performs no tracking (privacy manifest declares
-> tracking = false). Account email is verified with an in-app 6-digit code (no deep link).
+> tracking = false). Anonymous crash reports are sent to Sentry for diagnostics only — not
+> linked to the user's identity and never containing health data.
+> Account email is verified with an in-app 6-digit code (no deep link).
 > Users can permanently delete their account and all data from Settings → Danger zone.
 > A pre-confirmed demo account seeded with sample data is provided below.
 
