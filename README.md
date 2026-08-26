@@ -14,6 +14,8 @@ plus supporting pages.
 | Support | `/support/` | https://baochicabowwow.github.io/metabolic-care-urls/support/ |
 | Blog | `/blog/` | https://www.krestrel.com/blog/ |
 | Blog — Day start | `/blog/day-start-hour/` | https://www.krestrel.com/blog/day-start-hour/ |
+| Blog — Appointments | `/blog/appointment-management/` | https://www.krestrel.com/blog/appointment-management/ |
+| Blog — Lysine | `/blog/tracking-lysine/` | https://www.krestrel.com/blog/tracking-lysine/ |
 
 The app reads the Privacy and Support URLs from `src/lib/legal.ts` in the app repo.
 
