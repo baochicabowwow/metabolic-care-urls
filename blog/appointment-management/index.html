@@ -1,0 +1,225 @@
+<!-- NOTE: the author byline below is a placeholder. Replace "Tom Alvarez" with a
+     real person before this goes live, and do not add clinical credentials to a
+     byline unless the named author actually holds them. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Walking Into the Appointment Prepared — Krestrel</title>
+  <meta name="description" content="A working system for managing a rare-disease care team: one record per provider, questions that carry forward between visits, and notes you can actually find six months later." />
+  <link rel="canonical" href="https://www.krestrel.com/blog/appointment-management/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="stylesheet" href="../../assets/style.css" />
+  <link rel="icon" href="../../assets/brand/icon.svg" type="image/svg+xml" />
+  <link rel="icon" href="../../assets/brand/favicon-32.png" sizes="32x32" />
+  <link rel="icon" href="../../assets/brand/favicon-16.png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="../../assets/brand/apple-touch-icon.png" />
+  <meta name="theme-color" content="#4E6E8C" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Krestrel" />
+  <meta property="og:title" content="Walking Into the Appointment Prepared" />
+  <meta property="og:description" content="A working system for managing a rare-disease care team: providers, carry-forward questions, and visit notes that stay findable." />
+  <meta property="og:url" content="https://www.krestrel.com/blog/appointment-management/" />
+  <meta property="og:image" content="https://www.krestrel.com/assets/brand/web-icon-512.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Walking Into the Appointment Prepared" />
+  <meta name="twitter:description" content="Providers, carry-forward questions, and visit notes that stay findable six months later." />
+  <meta name="twitter:image" content="https://www.krestrel.com/assets/brand/web-icon-512.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Walking Into the Appointment Prepared",
+    "description": "A working system for managing a rare-disease care team: one record per provider, questions that carry forward between visits, and visit notes that stay findable.",
+    "datePublished": "2026-08-21",
+    "dateModified": "2026-08-21",
+    "inLanguage": "en",
+    "author": { "@type": "Person", "name": "Tom Alvarez" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Krestrel",
+      "logo": { "@type": "ImageObject", "url": "https://www.krestrel.com/assets/brand/web-icon-512.png" }
+    },
+    "image": "https://www.krestrel.com/assets/brand/web-icon-512.png",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.krestrel.com/blog/appointment-management/" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I keep track of questions between medical appointments?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Keep the list attached to the provider rather than to a single visit. In Krestrel, questions belong to a care provider and stay open until you mark them answered, so anything you did not get to in one appointment is still waiting at the next one instead of being lost with that visit's notes." }
+      },
+      {
+        "@type": "Question",
+        "name": "How should I organise a child's many specialists?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Create one record per person, not per clinic, and group them by specialty. Families managing a metabolic condition often see a geneticist, a neurologist, a paediatrician, a dietitian and several therapists, and two therapists of the same discipline need separate records so their notes and questions do not merge." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can other caregivers see appointment notes?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Only if you let them. Appointments in Krestrel sit behind a view permission, so a circle primary can share day-to-day logging with a helper while keeping providers, visit notes and questions private." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="../../"><img class="logo" src="../../assets/brand/icon.svg" alt="" width="32" height="32" /> Krestrel</a>
+      <nav>
+        <a href="../">Blog</a>
+        <a href="../../privacy/">Privacy</a>
+        <a href="../../terms/">Terms</a>
+        <a href="../../support/">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article>
+      <h1>Walking Into the Appointment Prepared</h1>
+      <p class="updated">By <strong>Tom Alvarez</strong>, Product · Published 21 August 2026 · 6 min read</p>
+
+      <p>A specialist appointment is a scheduling problem wearing a medical coat. You have
+        roughly twenty minutes, a clinician who last saw your child six months ago, and a
+        set of things you needed to ask — most of which you will remember in the car
+        afterwards.</p>
+
+      <p>This post is about the system, not the medicine. Below is the structure we built
+        into Krestrel's appointments feature and the reasoning behind each part, so you can
+        run the same system anywhere, on paper if you prefer.</p>
+
+      <h2>1. One record per person, grouped by specialty</h2>
+
+      <p>A child with a metabolic condition typically has a wide care team: a geneticist, a
+        neurologist, a paediatrician, a dietitian, and often several therapists across
+        physical, occupational and speech therapy.</p>
+
+      <p>The rule that keeps this legible is <strong>one record per person, not per
+        clinic</strong>. Two physical therapists are two records. The reason is practical:
+        notes and questions attach to a person, and merging two therapists into one
+        "Physical therapy" entry means you can no longer tell who told you what. Krestrel
+        groups providers by specialty for browsing but keeps each person distinct, and lets
+        you archive a provider you no longer see without deleting the history of the visits
+        you had with them.</p>
+
+      <p>Free-text specialties matter too. Rare-disease care teams do not fit a fixed dropdown,
+        and an app that forces one produces a list full of "Other".</p>
+
+      <h2>2. Questions belong to the provider, not the visit</h2>
+
+      <p>This is the part that most tools get backwards, and the reason we built the feature
+        at all.</p>
+
+      <p>The usual pattern is a notes field on each appointment. You type your questions in,
+        you get through three of the five, the appointment ends, and those two unanswered
+        questions are now buried in the notes of a visit that is over. Six months later you
+        start a fresh list and ask one of them again — or, more often, you don't.</p>
+
+      <p>Attach the list to the <strong>provider</strong> instead and the behaviour inverts.
+        A question you add in March is open, and it stays open — visible every time you open
+        that provider — until you mark it answered. Questions carry forward across visits by
+        default. Krestrel records the answer alongside the question and which appointment it
+        was answered at, so an answered question becomes a searchable record rather than
+        disappearing.</p>
+
+      <div class="callout">
+        <strong>The practical effect:</strong> you stop preparing for appointments. There is
+        nothing to prepare, because the list has been accumulating since the last one. You add
+        questions the moment they occur to you — 2am, mid-tantrum, in a supermarket aisle —
+        and they are simply there when you sit down.
+      </div>
+
+      <h2>3. Capture the answer in the room</h2>
+
+      <p>Notes written afterwards are reconstructions. Notes written in the room are records.
+        The difference shows up months later when a second specialist asks what the first one
+        actually said.</p>
+
+      <p>Two habits do most of the work:</p>
+
+      <ul>
+        <li><strong>Mark each question answered as it is answered</strong>, with the answer
+          in the clinician's own words wherever you can manage it. Paraphrase drifts.</li>
+        <li><strong>Put anything that is not an answer to a question into the visit note</strong> —
+          the plan, dose changes, what to watch for, what triggers the next call.</li>
+      </ul>
+
+      <p>Appointments carry a status of scheduled, completed or cancelled, which sounds like
+        bookkeeping until the year a course of therapy gets cancelled four times and someone
+        asks how often that has been happening.</p>
+
+      <h2>4. Keep the next appointment and the last visit one glance apart</h2>
+
+      <p>Two facts answer most of the questions a caregiver actually has: <em>when is the next
+        one</em>, and <em>what happened at the last one</em>. Krestrel surfaces exactly those —
+        the soonest upcoming appointment and the most recent past visit — alongside a count of
+        open questions for each provider. If that count is climbing and the next visit is a
+        long way off, you have concrete evidence for asking to be seen sooner.</p>
+
+      <h2>5. Decide who on the care circle sees it</h2>
+
+      <p>Appointment records are among the most sensitive things in the app. A prognosis
+        conversation is not something you necessarily want visible to every helper who logs a
+        nap.</p>
+
+      <p>So appointments sit behind their own view permission. A circle primary can grant a
+        babysitter or a night nurse the ability to log feeds and medicines while leaving
+        providers, visits and questions out of their view entirely. The permission is enforced
+        in the database itself, not just hidden in the interface — the rows are not sent to a
+        device that is not permitted to see them.</p>
+
+      <h2>The pre-appointment routine, condensed</h2>
+
+      <ul>
+        <li><strong>Ongoing:</strong> add questions as they occur, to the provider they belong to.</li>
+        <li><strong>The week before:</strong> open the provider, read the open list, delete the
+          ones that answered themselves, reorder so the most important is first — you may only
+          get through half.</li>
+        <li><strong>In the room:</strong> mark answers as they come. Add new questions the visit
+          itself raises.</li>
+        <li><strong>Leaving:</strong> write the visit note before you reach the car park, and
+          book the next appointment while the plan is still fresh.</li>
+        <li><strong>Afterwards:</strong> anything unanswered stays open. That is the point.</li>
+      </ul>
+
+      <p>None of this is complicated. It is just the difference between arriving with a system
+        and arriving with a memory. If you are also tracking a restricted diet, the same logic
+        applies to the numbers you bring with you — see
+        <a href="../tracking-lysine/">Counting Lysine Without Losing the Plot</a>.</p>
+
+      <div class="callout warn">
+        <strong>Krestrel is a record-keeping tool, not medical advice.</strong> It does not
+        recommend treatments, diets or amounts, and it is not a substitute for your care team's
+        own records. Always confirm plans and instructions with the clinicians who set them.
+      </div>
+
+      <div class="card">
+        <h3>More from Krestrel</h3>
+        <p><a href="../tracking-lysine/">Counting Lysine Without Losing the Plot</a> ·
+          <a href="../day-start-hour/">Why a 2am Feed Shouldn't Count as Tomorrow</a> ·
+          <a href="../">All posts</a></p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <nav>
+        <a href="../">Blog</a>
+        <a href="../../privacy/">Privacy</a>
+        <a href="../../terms/">Terms</a>
+        <a href="../../support/">Support</a>
+      </nav>
+      <span class="copy">© 2026 Krestrel</span>
+    </div>
+  </footer>
+</body>
+</html>

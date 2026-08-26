@@ -12,6 +12,10 @@ plus supporting pages.
 | Privacy Policy | `/privacy/` | https://baochicabowwow.github.io/metabolic-care-urls/privacy/ |
 | Terms of Use | `/terms/` | https://baochicabowwow.github.io/metabolic-care-urls/terms/ |
 | Support | `/support/` | https://baochicabowwow.github.io/metabolic-care-urls/support/ |
+| Blog | `/blog/` | https://www.krestrel.com/blog/ |
+| Blog — Day start | `/blog/day-start-hour/` | https://www.krestrel.com/blog/day-start-hour/ |
+| Blog — Appointments | `/blog/appointment-management/` | https://www.krestrel.com/blog/appointment-management/ |
+| Blog — Lysine | `/blog/tracking-lysine/` | https://www.krestrel.com/blog/tracking-lysine/ |
 
 The app reads the Privacy and Support URLs from `src/lib/legal.ts` in the app repo.
 
@@ -23,6 +27,13 @@ The app reads the Privacy and Support URLs from `src/lib/legal.ts` in the app re
 4. Wait ~1 minute, then confirm the URLs above load over **HTTPS**.
 
 `.nojekyll` is included so GitHub serves the files as-is.
+
+## SEO
+
+`robots.txt` and `sitemap.xml` sit at the repo root and reference the `www.krestrel.com`
+custom domain. When adding a page, add its URL to `sitemap.xml`. Blog posts live in
+`blog/<slug>/index.html`, carry a canonical URL, Open Graph/Twitter tags, and
+`BlogPosting` + `FAQPage` JSON-LD, and are linked from `blog/index.html` and the site nav.
 
 ## Support contact
 
