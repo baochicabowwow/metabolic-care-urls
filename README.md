@@ -28,6 +28,23 @@ The app reads the Privacy and Support URLs from `src/lib/legal.ts` in the app re
 
 `.nojekyll` is included so GitHub serves the files as-is.
 
+## Blog visibility (currently hidden)
+
+The `/blog/` pages are **temporarily hidden from the public site**. They are still
+committed and still reachable by direct URL, but:
+
+- every blog page carries `<meta name="robots" content="noindex, nofollow">`
+- the Blog link is removed from the header/footer nav and the home-page card grid
+- no blog URL appears in `sitemap.xml`
+
+`robots.txt` deliberately still *allows* crawling of `/blog/`. A `Disallow` rule would
+stop crawlers reading the pages at all, and therefore stop them seeing the `noindex`
+tag — the pages could stay indexed. Allow the crawl, let `noindex` do the work.
+
+**To unhide:** revert this change — remove the `noindex` metas (the posts' original
+`index, follow, max-image-preview:large` value), restore the nav links and home card,
+and add the blog URLs back to `sitemap.xml`.
+
 ## SEO
 
 `robots.txt` and `sitemap.xml` sit at the repo root and reference the `www.krestrel.com`
