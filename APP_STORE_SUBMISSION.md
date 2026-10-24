@@ -59,8 +59,11 @@ All user-entered data is **linked to the user's identity**; crash data is **not 
 > their own child's metabolic diet and care (growth, labs, medications, adverse events such
 > as seizures, meals, appointments, notes). At sign-up the user must confirm they are
 > the parent/legal guardian, are 18+, and agree to the Privacy Policy before any data is
-> collected. Nutrient values are USDA references shown with an in-app "not medical advice"
-> disclaimer; the app provides no diagnosis. The app uses **no HealthKit/CareKit**, contains
+> collected. Nutrient values are reference figures from public food-composition tables (USDA
+> FoodData Central and other national databases, credited in Settings → About → Food data
+> sources), shown with an in-app "not medical advice" disclaimer; the app provides no
+> diagnosis. Families track total protein against a range their dietitian sets; any
+> amino-acid figure (e.g. lysine) is labelled as an estimate and has no limit attached. The app uses **no HealthKit/CareKit**, contains
 > no advertising or third-party analytics, and performs no tracking (privacy manifest declares
 > tracking = false). Anonymous crash reports are sent to Sentry for diagnostics only — not
 > linked to the user's identity and never containing health data.
@@ -74,7 +77,10 @@ All user-entered data is **linked to the user's identity**; crash data is **not 
 - **Username:** _<pre-confirmed demo account email>_
 - **Password:** _<demo password>_
 - Seed it with a child profile plus a few meals, labs, and adverse events so the reviewer can
-  see the full flow without doing the email-code step.
+  see the full flow without doing the email-code step. Since 1.4.0 the child needs a
+  **protein range** (not amino-acid limits, or the reviewer lands on the "Switch to protein"
+  prompt), meals whose foods carry protein, and one dietitian estimate factor so a
+  "≈ … mg lysine (estimate)" line shows.
 
 ## Store listing
 
@@ -83,7 +89,9 @@ All user-entered data is **linked to the user's identity**; crash data is **not 
 - **Age rating:** complete the current questionnaire honestly (declare medical/wellness
   topics where true) and accept whatever rating it produces
 - **Screenshots:** one iPhone set (6.9" or 6.5") **and** an iPad 13" set while
-  `supportsTablet` stays true
+  `supportsTablet` stays true. Retake both for 1.4.0 — the pre-1.4 shots show lysine limits.
+  Cover the protein card on Today, "g left today" on the meal log, and the raw/cooked form
+  picker in food search.
 - **Encryption:** `ITSAppUsesNonExemptEncryption = false` (already in `app.json`)
 
 ### Name (Localizable Information)
@@ -101,7 +109,7 @@ Metabolic diet & care tracker
 ### Keywords (100-char limit, comma-separated)
 
 ```
-metabolic,lysine,rare disease,caregiver,diet log,PDE,food diary,care circle,baby tracker
+metabolic,protein,rare disease,caregiver,diet log,PDE,food diary,care circle,baby tracker
 ```
 
 Don't repeat words already in the name or subtitle — Apple ignores duplicates.
@@ -111,8 +119,8 @@ Don't repeat words already in the name or subtitle — Apple ignores duplicates.
 ```
 Krestrel is a record-keeping tool for parents and legal guardians of children with metabolic conditions.
 
-LOG MEALS AND NUTRIENTS
-Record what your child eats. Krestrel calculates per-meal and daily nutrient totals from USDA FoodData Central reference values and shows them alongside the limits you enter from your child's care team. Krestrel does not suggest, set, or adjust any limit.
+LOG MEALS AND PROTEIN
+Record what your child eats. Krestrel calculates per-meal and daily protein from public food-composition reference tables — USDA FoodData Central and national tables from Germany, Canada, the UK and France — and shows it against the minimum and maximum you enter from your child's care team, including how much is left today. If your dietitian gives you a factor, Krestrel can also show an amino-acid estimate such as lysine, clearly labelled as an estimate. Krestrel does not suggest, set, or adjust any limit.
 
 TRACK DAILY CARE
 Feeding, sleep, diapers, medications given, growth measurements, milestones, appointments, and health-log entries, in one timeline your whole care circle shares.
@@ -126,17 +134,20 @@ Invite the other parent, family, or caregivers with per-person permissions.
 PRIVATE BY DESIGN
 No ads, no third-party analytics, no tracking. Your data is used only to run the features you use, and you can permanently delete your account and all data in Settings.
 
-Krestrel is not a medical device and does not provide medical advice, diagnosis, or treatment. Nutrient figures are general references that may not match a specific product — always confirm values and your child's limits with your metabolic dietitian.
+Krestrel is not a medical device and does not provide medical advice, diagnosis, or treatment. Nutrient figures are general references that may not match a specific product — always confirm values and your child's protein range with your metabolic dietitian.
 ```
 
 Every sentence above is verifiable against the app — keep it that way when editing:
-no outcome promises, no "safe" / "accurate" / "precision" claims.
+no outcome promises, no "safe" / "accurate" / "precision" claims. Before pasting the 1.4.0
+copy, check that Settings → About → Food data sources in the release build lists the tables
+the description names (the curated food list must be loaded and published first).
 
 ## Guidelines this submission satisfies
 
 - **5.1.1** consent + secure handling + in-app account deletion
 - **5.1.3** no HealthKit/CareKit; health data never used for ads/marketing
-- **1.4.1 / medical** USDA references + visible "not medical advice" disclaimer
+- **1.4.1 / medical** public reference tables (credited in-app) + visible "not medical
+  advice" disclaimer; amino-acid figures labelled as estimates
 - **2.1** working seeded demo account
 - **2.5.x** requests no camera/photo/microphone permissions in v1 — photo sharing is
   flag-gated off and its native module is excluded from the build (re-add the permissions
