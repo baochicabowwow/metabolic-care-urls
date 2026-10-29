@@ -6,8 +6,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Counting Lysine Without Losing the Plot — Krestrel</title>
-  <meta name="description" content="A practical guide to tracking daily lysine for a child on a lysine-restricted diet: per-kg targets, weighing food, dietitian values, and why a running total beats a shoebox of receipts." />
+  <title>Counting Protein (and Lysine) Without Losing the Plot — Krestrel</title>
+  <meta name="description" content="A practical guide to tracking daily protein for a child on a protein- or lysine-restricted diet: per-kg protein ranges, weighing food, dietitian values, lysine estimates, and why a running total beats a shoebox of receipts." />
   <link rel="canonical" href="https://www.krestrel.com/blog/tracking-lysine/" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="stylesheet" href="../../assets/style.css" />
@@ -18,22 +18,22 @@
   <meta name="theme-color" content="#4E6E8C" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Krestrel" />
-  <meta property="og:title" content="Counting Lysine Without Losing the Plot" />
-  <meta property="og:description" content="What tracking a lysine-restricted diet actually looks like on a Tuesday, and the handful of habits that make the numbers trustworthy." />
+  <meta property="og:title" content="Counting Protein (and Lysine) Without Losing the Plot" />
+  <meta property="og:description" content="What tracking a protein-restricted diet actually looks like on a Tuesday, and the handful of habits that make the numbers trustworthy." />
   <meta property="og:url" content="https://www.krestrel.com/blog/tracking-lysine/" />
   <meta property="og:image" content="https://www.krestrel.com/assets/brand/web-icon-512.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Counting Lysine Without Losing the Plot" />
-  <meta name="twitter:description" content="A practical guide to tracking daily lysine for a child on a restricted diet." />
+  <meta name="twitter:title" content="Counting Protein (and Lysine) Without Losing the Plot" />
+  <meta name="twitter:description" content="A practical guide to tracking daily protein for a child on a restricted diet." />
   <meta name="twitter:image" content="https://www.krestrel.com/assets/brand/web-icon-512.png" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": "Counting Lysine Without Losing the Plot",
-    "description": "A practical guide to tracking daily lysine for a child on a lysine-restricted diet: per-kg targets, weighing food, dietitian values, and keeping a running total you can trust.",
+    "headline": "Counting Protein (and Lysine) Without Losing the Plot",
+    "description": "A practical guide to tracking daily protein for a child on a protein- or lysine-restricted diet: per-kg protein ranges, weighing food, dietitian values, lysine estimates, and keeping a running total you can trust.",
     "datePublished": "2026-08-12",
-    "dateModified": "2026-08-12",
+    "dateModified": "2026-10-23",
     "inLanguage": "en",
     "author": { "@type": "Person", "name": "Priya Raman" },
     "publisher": {
@@ -52,18 +52,23 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "How is a daily lysine limit calculated for a child?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Metabolic teams commonly set the limit per kilogram of body weight — for example a number of milligrams of lysine per kilogram per day — so the allowance grows as the child grows. Krestrel supports both per-kilogram and fixed absolute targets, and recalculates a per-kilogram target against the most recent recorded weight. Your dietitian sets the number; the app only does the arithmetic." }
+        "name": "How is a daily protein range set for a child?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Metabolic teams commonly give a minimum and a maximum in grams of protein, often per kilogram of body weight, so the allowance grows as the child grows. Krestrel takes a minimum, a maximum or both, per kilogram or per day, and works a per-kilogram range out against the most recent recorded weight. Your dietitian sets the numbers; the app only does the arithmetic." }
       },
       {
         "@type": "Question",
-        "name": "Do I have to weigh every food to track lysine?",
-        "acceptedAnswer": { "@type": "Answer", "text": "For the foods that carry most of the lysine, yes — a kitchen scale in grams is far more reliable than cups or spoons. For very low-lysine foods, a saved named serving is usually close enough. Krestrel stores nutrient values per 100 g and scales them to whatever weight you enter." }
+        "name": "Do I have to weigh every food to track protein?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For the foods that carry most of the protein, yes — a kitchen scale in grams is far more reliable than cups or spoons. For very low-protein foods, a saved named serving is usually close enough. Krestrel stores nutrient values per 100 g and scales them to whatever weight you enter." }
       },
       {
         "@type": "Question",
-        "name": "What happens to my old logs if I correct a food's lysine value?",
+        "name": "What happens to my old logs if I correct a food's protein value?",
         "acceptedAnswer": { "@type": "Answer", "text": "Nothing. Krestrel snapshots the calculated nutrients onto each meal item at the moment you log it, so correcting a food later changes future meals only. Yesterday's total stays exactly what you saw yesterday." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Krestrel still show lysine?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, as an estimate. Since version 1.4 Krestrel tracks total protein against your dietitian's range. If your dietitian gives you a factor (milligrams of lysine per gram of protein), the app shows a line such as ≈ 640 mg lysine (estimate) under the day's protein. No limit is attached to it. Lysine limits saved before 1.4 are kept as history." }
       }
     ]
   }
@@ -84,13 +89,13 @@
 
   <main class="wrap">
     <article>
-      <h1>Counting Lysine Without Losing the Plot</h1>
-      <p class="updated">By <strong>Priya Raman</strong>, Community · Published 12 August 2026 · 7 min read</p>
+      <h1>Counting Protein (and Lysine) Without Losing the Plot</h1>
+      <p class="updated">By <strong>Priya Raman</strong>, Community · Published 12 August 2026 · Updated 23 October 2026 for Krestrel 1.4 · 7 min read</p>
 
       <p>Nobody hands you a manual for this. You come home from the metabolic clinic
-        with a number — so many milligrams of lysine per kilogram per day — and a printed
-        list of foods, and somewhere between the car park and the kitchen it stops being a
-        number and becomes every single meal, forever.</p>
+        with a number — so many grams of protein per kilogram per day, sometimes with a
+        lysine figure alongside it — and a printed list of foods, and somewhere between the
+        car park and the kitchen it stops being a number and becomes every single meal, forever.</p>
 
       <p>I want to talk about the ordinary mechanics of it. Not the science; your
         team owns that. The mechanics. The bit where it's 5pm, one child is crying, the
@@ -110,11 +115,12 @@
         before I say yes to the toast.</p>
 
       <div class="callout">
-        <strong>What "left" actually means.</strong> If your target is set per kilogram,
-        the day's allowance is that per-kilo figure multiplied by your child's current
-        weight. Log a new weight and tomorrow's allowance moves with it. That is a small
-        thing that saves a recurring, awful chore: recalculating by hand every time your
-        child grows.
+        <strong>What "left" actually means.</strong> If your protein range is set per
+        kilogram, the day's allowance is that per-kilo figure multiplied by your child's
+        current weight. Log a new weight and tomorrow's allowance moves with it. That is a
+        small thing that saves a recurring, awful chore: recalculating by hand every time your
+        child grows. Krestrel shows the grams left today against the maximum and, if your
+        dietitian also set a minimum, how much is still needed to reach it.
       </div>
 
       <h2>Weigh the things that matter, estimate the rest</h2>
@@ -123,7 +129,7 @@
         month. The version that survived contact with real life is coarser:</p>
 
       <ul>
-        <li><strong>Weigh, in grams, anything that carries real lysine.</strong> Bread,
+        <li><strong>Weigh, in grams, anything that carries real protein.</strong> Bread,
           pasta, dairy, legumes, meat, the special low-protein products. A cheap digital
           scale is the single best purchase you'll make. Cups and spoons vary enormously;
           grams don't.</li>
@@ -142,11 +148,13 @@
 
       <h2>Get your dietitian's numbers into the app, once</h2>
 
-      <p>Most families are handed a spreadsheet or a printed table of lysine values by their
+      <p>Most families are handed a spreadsheet or a printed table of food values by their
         clinic, often specific to the products available where you live. Retyping that at 11pm
-        is how mistakes get in. Krestrel takes a CSV import — either in the app or, for a big
-        dietitian dataset, through the bulk import script — so the values you actually use
-        become the values the app calculates from.</p>
+        is how mistakes get in. Krestrel starts you with a shared food list drawn from public
+        food-composition tables — one entry per food, with a raw or cooked choice underneath —
+        and takes a CSV import for the rest, so the protein values you actually use become the
+        values the app calculates from. (The importer keeps protein and energy; amino-acid
+        columns are skipped, and the preview tells you so.)</p>
 
       <p>Two things worth knowing about how those values are stored:</p>
 
@@ -156,11 +164,29 @@
           without touching anyone else's food list. The app flags a value you've overridden
           so you can see at a glance which numbers are yours.</li>
         <li><strong>Corrections don't rewrite history.</strong> This is the detail I'd most
-          want a new family to know. When you log a meal, Krestrel calculates the lysine at
+          want a new family to know. When you log a meal, Krestrel calculates the protein at
           that moment and stores the result on the meal itself. Discovering next March that
           a food's value was wrong will change what you log from March onward — it will not
           silently redraw last autumn's chart. Your history stays a record of what you
           recorded, which is the only thing that makes it worth showing anyone.</li>
+      </ul>
+
+      <h2>Where lysine fits now</h2>
+
+      <p>If your child's diet is about lysine, you may wonder why the app leads with protein.
+        It's because that's how many families are asked to run it day to day: count protein
+        in grams, and the lysine figure is worked out from it. Counting lysine food by food
+        was hard to keep up, and the lysine data for many foods is patchy.</p>
+
+      <ul>
+        <li><strong>Lysine is an estimate, not a second budget.</strong> If your dietitian gives
+          you a factor — so many milligrams of lysine per gram of protein — Krestrel shows a line
+          like "≈ 640 mg lysine (estimate)" under the day's protein. No limit is attached to it,
+          and it is only as good as the factor. Your dietitian stays the authority on it.</li>
+        <li><strong>Your old limits aren't thrown away.</strong> Lysine limits saved before
+          version 1.4 stay in the child's history, and the emergency letter keeps listing them
+          until you switch. A one-time "Switch to protein" screen walks you through entering the
+          protein range instead.</li>
       </ul>
 
       <h2>Log at the table, not at bedtime</h2>
@@ -203,9 +229,10 @@
 
       <div class="callout warn">
         <strong>Krestrel is a record-keeping tool, not medical advice.</strong> It does not
-        recommend diets, restrictions or amounts. Reference nutrient values come from USDA
-        FoodData Central and may not match specific products — always confirm values and your
-        child's dietary plan with your metabolic dietitian and care team.
+        recommend diets, restrictions or amounts. Reference nutrient values come from public
+        food-composition tables (USDA FoodData Central and others) and may not match specific
+        products, and amino-acid figures are estimates — always confirm values and your child's
+        dietary plan with your metabolic dietitian and care team.
       </div>
 
       <div class="card">
