@@ -152,3 +152,57 @@ the description names (the curated food list must be loaded and published first)
 - **2.5.x** requests no camera/photo/microphone permissions in v1 — photo sharing is
   flag-gated off and its native module is excluded from the build (re-add the permissions
   when the feature ships)
+
+## AI features (connected AI apps / MCP, AI lab reading) — add when that build ships
+
+Full background: `docs/MCP_ARCHITECTURE.md` §9 in the app repo. Paste the
+items below into App Store Connect for the first build that includes
+**Settings → AI & connected apps** (feature flag `aiConnections`) or runs
+`extract-lab-pdf` with `LAB_EXTRACTION_MODE=claude`.
+
+### App Privacy ("nutrition labels")
+
+**Expected: no new rows, nothing marked Tracking.** The data involved is the
+**Health** data already declared (Linked, App Functionality).
+
+- **AI lab reading:** sending a report to Anthropic is processing on our behalf
+  (a service provider), which is still App Functionality.
+- **Connected AI apps:** that sharing is server-to-server, at the parent's
+  request, started from the other app. It isn't collection by this iOS app.
+
+Re-confirm these answers with counsel when the privacy policy is reviewed.
+
+### App Review Information → Notes (append)
+
+> **AI features.** (1) *Optional AI lab reading:* when a report would be read
+> more accurately with AI, the import screen first asks permission, naming
+> Anthropic (Claude) and the data sent; nothing is sent without it, and
+> Settings → AI & connected apps lets the parent withdraw it. Values are always
+> reviewed before saving. (2) *Connected AI apps:* parents can optionally connect
+> their own ChatGPT or Claude account. The connection is started from inside that
+> AI app (not from this app), signs in on our website, and shows a consent screen
+> where the parent picks which children and which data (e.g. "labs: read",
+> "feeds: read & add") to share. Settings → AI & connected apps lists each
+> connection, what it can access and its recent activity, and lets the parent
+> revoke it. AI-proposed lab values are drafts the parent must confirm. The demo
+> account includes one sample connection, activity entries and a pending draft so
+> these screens can be reviewed. No data is used for advertising or tracking.
+
+### Demo account seed (add)
+
+- One `mcp_grants` connection, e.g. client name "Claude (demo)": feeds read and
+  write, labs read and write.
+- A few `mcp_audit` rows.
+- One pending `ai_drafts` row of kind `lab_results`.
+
+### Metadata
+
+- No "ChatGPT" or "Claude" in the app name, subtitle or keywords (2.3 / 5.2).
+- If the description mentions it, say "Connect an AI assistant that supports
+  MCP to ask questions about your logs". Don't suggest diagnosis or advice.
+
+### Guidelines
+
+- **5.1.2(i)** — explicit, named consent before any data goes to a third-party
+  AI.
+- **5.1.1(v)** — deleting the account cuts off every connected AI app.

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <meta name="referrer" content="no-referrer" />
+  <!-- Scripts only from this site (no CDN); data only to Supabase. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://*.supabase.co http://127.0.0.1:54321 http://localhost:54321; form-action 'self'; base-uri 'none'; object-src 'none'" />
+  <title>Krestrel — Connect an AI app</title>
+  <link rel="stylesheet" href="../../assets/style.css" />
+  <link rel="icon" href="../../assets/brand/icon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#4E6E8C" />
+  <style>
+    [hidden] { display: none !important; }
+    .consent { max-width: 640px; }
+    .row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .child { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin: 12px 0; background: var(--card); }
+    .child h3 { margin: 0 0 6px; }
+    .cap { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 0; border-top: 1px solid var(--line); }
+    .cap:first-of-type { border-top: 0; }
+    .cap label { flex: 1; }
+    .cap small { display: block; color: var(--muted); }
+    select, input[type=email], input[type=password], input[type=text] { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); }
+    input[type=email], input[type=password], input[type=text] { width: 100%; box-sizing: border-box; margin: 4px 0 10px; }
+    .actions { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+    .actions .btn { flex: 1; text-align: center; min-width: 140px; }
+    .who { color: var(--muted); font-size: 0.9em; }
+    .error { color: #B3261E; }
+    .badge { display: inline-block; font-size: 0.8em; padding: 2px 8px; border-radius: 999px; background: var(--brand-light); color: var(--brand-dark); }
+    .badge.warn { background: var(--warn-light); color: #8a4b00; }
+    button.link { background: none; border: 0; padding: 0; color: var(--brand); text-decoration: underline; cursor: pointer; font: inherit; }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="../../"><img class="logo" src="../../assets/brand/icon.svg" alt="" width="32" height="32" /> Krestrel</a>
+      <nav>
+        <a href="../../privacy/">Privacy</a>
+        <a href="../../support/">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap consent">
+    <p id="loading">Loading…</p>
+
+    <!-- Problems before anything else can happen -->
+    <div id="fatal" hidden>
+      <h1>Can’t continue</h1>
+      <p id="fatal-msg"></p>
+      <p><a class="btn secondary" href="../../support/">Get support</a></p>
+    </div>
+
+    <!-- Sign in with the Krestrel account (not the AI app's account) -->
+    <div id="signin" hidden>
+      <h1>Sign in to Krestrel</h1>
+      <p>An AI app wants to connect to your Krestrel account. Sign in with the email and password you use in the
+         Krestrel app — not your ChatGPT or Claude login.</p>
+      <div class="card">
+        <form id="signin-form" autocomplete="on">
+          <label for="email">Email</label>
+          <input id="email" type="email" required autocomplete="email" />
+          <div id="password-block">
+            <label for="password">Password</label>
+            <input id="password" type="password" autocomplete="current-password" />
+          </div>
+          <div id="code-block" hidden>
+            <label for="code">6-digit code from your email</label>
+            <input id="code" type="text" inputmode="numeric" pattern="[0-9]{6,10}" autocomplete="one-time-code" />
+          </div>
+          <p id="signin-error" class="error" role="alert"></p>
+          <div class="actions">
+            <button class="btn" type="submit" id="signin-submit">Sign in</button>
+          </div>
+        </form>
+        <p class="who">
+          <button class="link" type="button" id="use-code">Email me a sign-in code instead</button>
+        </p>
+        <p class="who">No account? Create one in the Krestrel app first. Forgot your password? Reset it in the app.</p>
+      </div>
+    </div>
+
+    <!-- AI connections are switched off for the family -->
+    <div id="blocked" hidden>
+      <h1>AI apps are turned off</h1>
+      <p>Your family’s primary caregiver has turned off AI apps in Krestrel (Settings → AI &amp; connected apps).
+         Ask them to turn it on, then connect again.</p>
+      <div class="actions"><button class="btn secondary" type="button" id="blocked-deny">Back to the AI app</button></div>
+    </div>
+
+    <!-- The consent screen -->
+    <div id="consent" hidden>
+      <h1>Connect <span id="client-name"></span> to Krestrel?</h1>
+      <p class="row">
+        <span id="client-badge" class="badge"></span>
+        <span class="who">Will return to <strong id="client-host"></strong></span>
+      </p>
+      <div id="unverified" class="callout warn" hidden>
+        <p>Krestrel doesn’t recognise this app. Only continue if <strong>you</strong> just added the Krestrel
+          connector in an app you trust (for example a local AI app on your own computer). If you didn’t, choose
+          <em>Don’t allow</em>. A connected app is signed in to your Krestrel account, so an untrustworthy one could
+          misuse it.</p>
+        <label class="row"><input type="checkbox" id="trust-unverified" /> I added this connector myself and trust this app</label>
+      </div>
+
+      <p>Choose what this AI app may see or add. You can change or remove this anytime in the Krestrel app
+         (Settings → AI &amp; connected apps). Nothing can be deleted by an AI app, and lab values it reads from a
+         document are saved only after you confirm them in Krestrel.</p>
+
+      <div id="children"></div>
+
+      <div class="card">
+        <label for="expiry"><strong>How long</strong></label>
+        <select id="expiry">
+          <option value="">Until I disconnect it</option>
+          <option value="90">90 days</option>
+          <option value="30">30 days</option>
+          <option value="7">7 days</option>
+        </select>
+      </div>
+
+      <div class="callout">
+        <strong>Before you allow:</strong> once information reaches this AI app it is covered by that company’s
+        privacy terms, not Krestrel’s, and it may be used to improve their models unless you turn that off in the AI
+        app’s settings. Anyone who can use that AI account can ask about your child. Answers from an AI are not
+        medical advice — check with your care team.
+      </div>
+
+      <p id="consent-error" class="error" role="alert"></p>
+      <div class="actions">
+        <button class="btn secondary" type="button" id="deny">Don’t allow</button>
+        <button class="btn" type="button" id="allow">Allow</button>
+      </div>
+      <p class="who">Signed in as <span id="signed-in-as"></span> · <button class="link" type="button" id="signout">Not you?</button></p>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <nav>
+        <a href="../../privacy/">Privacy</a>
+        <a href="../../terms/">Terms</a>
+        <a href="../../support/">Support</a>
+      </nav>
+      <span class="copy">© 2026 Krestrel</span>
+    </div>
+  </footer>
+
+  <script src="../vendor/supabase-js-2.108.2.js"></script>
+  <script src="../config.js"></script>
+  <script src="consent.js"></script>
+</body>
+</html>
