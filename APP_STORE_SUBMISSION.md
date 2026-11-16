@@ -201,6 +201,20 @@ Re-confirm these answers with counsel when the privacy policy is reviewed.
 - If the description mentions it, say "Connect an AI assistant that supports
   MCP to ask questions about your logs". Don't suggest diagnosis or advice.
 
+### What does NOT need a submission
+
+These are server-side changes, so they need no new build or App Review:
+
+- the MCP gateway and its updates;
+- the database migration;
+- the consent page;
+- the planned switch to asymmetric JWT signing keys.
+
+Installed app versions keep working as long as the legacy JWT secret is **not revoked**: the
+app's built-in `anon` key is signed with it. Retiring that key later needs an app update that
+uses a publishable key, delivered either by Expo update (`eas update`, no review) or by a
+normal release. Background: `docs/MCP_PLAN.md` section 4 in the app repo.
+
 ### Guidelines
 
 - **5.1.2(i)** — explicit, named consent before any data goes to a third-party
