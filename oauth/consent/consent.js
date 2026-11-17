@@ -38,7 +38,7 @@
 
   var $ = function (id) { return document.getElementById(id); };
   var show = function (id) {
-    ['loading', 'fatal', 'signin', 'blocked', 'consent'].forEach(function (s) { $(s).hidden = s !== id; });
+    ['loading', 'fatal', 'signin', 'blocked', 'not-allowed', 'consent'].forEach(function (s) { $(s).hidden = s !== id; });
   };
   var fatal = function (msg) { $('fatal-msg').textContent = msg; show('fatal'); };
 
@@ -185,6 +185,7 @@
   }
   $('deny').addEventListener('click', deny);
   $('blocked-deny').addEventListener('click', deny);
+  $('not-allowed-deny').addEventListener('click', deny);
 
   $('allow').addEventListener('click', async function () {
     var grants = grantsFromChoices();
@@ -241,6 +242,10 @@
     if (!memberships.length) return { blocked: false, kids: [] };
     var allowed = memberships.filter(function (x) { return !x.care_circles || x.care_circles.ai_connections_allowed !== false; });
     if (!allowed.length) return { blocked: true, kids: [] };
+    // A primary decides per caregiver whether they may connect AI apps (045).
+    // Off unless explicitly on; primaries always may.
+    allowed = allowed.filter(function (x) { return x.role === 'primary' || (x.permissions || {}).can_connect_ai === true; });
+    if (!allowed.length) return { notAllowed: true, kids: [] };
     var byCircle = {};
     allowed.forEach(function (x) { byCircle[x.care_circle_id] = x; });
     var k = await sb.from('children').select('id, name, care_circle_id').in('care_circle_id', Object.keys(byCircle)).order('name');
@@ -278,6 +283,7 @@
 
     var fam = await loadFamily(session.user.id);
     if (fam.blocked) { show('blocked'); return; }
+    if (fam.notAllowed) { show('not-allowed'); return; }
     if (!fam.kids.length) {
       fatal('There are no children in your Krestrel account yet. Add a child in the app, then connect again.');
       return;
