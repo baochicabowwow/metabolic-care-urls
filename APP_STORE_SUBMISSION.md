@@ -204,7 +204,7 @@ Re-confirm these answers with counsel when the privacy policy is reviewed.
 These are server-side changes, so they need no new build or App Review:
 
 - the MCP gateway and its updates;
-- the database migration;
+- the database migrations (045–048 in the app repo) and the access token hook;
 - the consent page;
 - the planned switch to asymmetric JWT signing keys.
 
