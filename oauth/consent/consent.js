@@ -18,18 +18,19 @@
 
   var CONSENT_VERSION = 'mcp-consent-2026-11';
 
-  // AI apps Krestrel connects to, by the host their sign-in returns to. Must
-  // match mcp_redirect_trusted in the app repo's migration 049, which is what
+  // AI apps Krestrel connects to, by their exact OAuth callback. Must match
+  // mcp_redirect_trusted in the app repo's migration 049, which is what
   // actually enforces it: an app is refused unless EVERY redirect address it
-  // registered is https on one of these hosts, or http on the parent's own
-  // computer (loopback). Anyone can register an app (ChatGPT needs that), so a
-  // look-alike would otherwise get its own sign-in code.
-  var KNOWN_HOSTS = {
-    'claude.ai': 'Claude',
-    'claude.com': 'Claude',
-    'chatgpt.com': 'ChatGPT',
-    'chat.openai.com': 'ChatGPT',
-  };
+  // registered is one of these, or http on the parent's own computer
+  // (loopback). Anyone can register an app (ChatGPT needs that), so a
+  // look-alike would otherwise get its own sign-in code. Exact paths, so an
+  // open redirect elsewhere on these sites can't bounce a code onward.
+  var CALLBACKS = [
+    { app: 'ChatGPT', re: /^https:\/\/chatgpt\.com\/connector\/oauth\/[A-Za-z0-9_-]{1,128}$/ },
+    { app: 'ChatGPT', re: /^https:\/\/chatgpt\.com\/connector_platform_oauth_redirect$/ },
+    { app: 'Claude', re: /^https:\/\/claude\.(ai|com)\/api\/mcp\/auth_callback$/ },
+  ];
+  var LOOPBACK = /^http:\/\/(127\.0\.0\.1|localhost|\[::1\])(:[0-9]{1,5})?(\/|$)/;
 
   var CAPS = [
     { key: 'feeds', label: 'Feeds, sleep, diapers & growth', hint: 'Bottles, nursing, sleep, diapers, temperature, weight', canWrite: true, def: 'read' },
@@ -283,7 +284,9 @@
       try { sessionStorage.setItem('krestrel-oauth-client-' + authorizationId, details.client.id); } catch (_) {}
     }
 
-    var app = recogniseApp(details.redirect_uri || details.redirect_url || '');
+    // A remembered approval comes back as the final redirect, with the code
+    // attached, so only then is the query ignored.
+    var app = recogniseApp(details.redirect_uri || details.redirect_url || '', !details.redirect_uri);
     if (!app.trusted) {
       $('untrusted-host').textContent = app.host || 'an unknown address';
       show('untrusted');
@@ -304,29 +307,32 @@
       choices[child.id] = { include: true, caps: caps };
     });
 
-    var name = (details.client && details.client.name) || 'An AI app';
-    $('client-name').textContent = name;
+    // Name the app by where its sign-in returns, not by the name it gave
+    // itself: anyone can register an app called "Krestrel Assistant".
+    var registered = (details.client && details.client.name) || '';
+    $('client-name').textContent = app.app || 'an app on your computer';
     $('client-host').textContent = app.host;
-    $('client-badge').textContent = app.label;
+    $('client-badge').textContent = app.app ? 'Recognised: ' + app.app : 'App on your computer';
     $('client-badge').className = 'badge';
+    $('client-registered').textContent = registered ? 'It registered itself as “' + registered + '”.' : '';
     $('signed-in-as').textContent = session.user.email || 'your account';
     renderChildren();
     show('consent');
   }
 
-  // Same rules as mcp_redirect_trusted (migration 049).
-  function recogniseApp(redirect) {
-    var u = null;
-    try { u = new URL(redirect); } catch (_) {}
-    if (!u || u.username || u.password) return { trusted: false, host: u ? u.host : '' };
-    var host = u.hostname.toLowerCase();
-    if (u.protocol === 'https:' && !u.port && KNOWN_HOSTS[host]) {
-      return { trusted: true, host: host, label: 'Recognised: ' + KNOWN_HOSTS[host] };
+  // Same rules as mcp_redirect_trusted (migration 049). Matches the raw
+  // address, not a browser-normalised one, so "/x/../" tricks don't pass here
+  // either. Returns { trusted, app ('ChatGPT' | 'Claude' | null for local), host }.
+  function recogniseApp(redirect, isFinalRedirect) {
+    var raw = String(redirect || '').trim();
+    var host = '';
+    try { host = new URL(raw).host; } catch (_) {}
+    var base = isFinalRedirect ? raw.split(/[?#]/)[0] : raw;
+    for (var i = 0; i < CALLBACKS.length; i++) {
+      if (CALLBACKS[i].re.test(base)) return { trusted: true, app: CALLBACKS[i].app, host: host };
     }
-    if (u.protocol === 'http:' && /^(127\.0\.0\.1|localhost|\[::1\])$/.test(host)) {
-      return { trusted: true, host: u.host, label: 'App on your computer' };
-    }
-    return { trusted: false, host: u.host };
+    if (LOOPBACK.test(base)) return { trusted: true, app: null, host: host };
+    return { trusted: false, app: null, host: host };
   }
 
   start().catch(function (err) {
