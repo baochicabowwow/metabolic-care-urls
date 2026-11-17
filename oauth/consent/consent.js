@@ -18,7 +18,12 @@
 
   var CONSENT_VERSION = 'mcp-consent-2026-11';
 
-  // Redirect hosts of well-known AI apps. Anything else is shown as unverified.
+  // AI apps Krestrel connects to, by the host their sign-in returns to. Must
+  // match mcp_redirect_trusted in the app repo's migration 049, which is what
+  // actually enforces it: an app is refused unless EVERY redirect address it
+  // registered is https on one of these hosts, or http on the parent's own
+  // computer (loopback). Anyone can register an app (ChatGPT needs that), so a
+  // look-alike would otherwise get its own sign-in code.
   var KNOWN_HOSTS = {
     'claude.ai': 'Claude',
     'claude.com': 'Claude',
@@ -38,7 +43,7 @@
 
   var $ = function (id) { return document.getElementById(id); };
   var show = function (id) {
-    ['loading', 'fatal', 'signin', 'blocked', 'not-allowed', 'consent'].forEach(function (s) { $(s).hidden = s !== id; });
+    ['loading', 'fatal', 'signin', 'untrusted', 'blocked', 'not-allowed', 'consent'].forEach(function (s) { $(s).hidden = s !== id; });
   };
   var fatal = function (msg) { $('fatal-msg').textContent = msg; show('fatal'); };
 
@@ -186,14 +191,11 @@
   $('deny').addEventListener('click', deny);
   $('blocked-deny').addEventListener('click', deny);
   $('not-allowed-deny').addEventListener('click', deny);
+  $('untrusted-deny').addEventListener('click', deny);
 
   $('allow').addEventListener('click', async function () {
     var grants = grantsFromChoices();
     $('consent-error').textContent = '';
-    if (!$('unverified').hidden && !$('trust-unverified').checked) {
-      $('consent-error').textContent = 'This app isn’t recognised. Tick the box to confirm you added it yourself, or choose Don’t allow.';
-      return;
-    }
     if (!grants.length) {
       $('consent-error').textContent = 'Choose at least one child and one area, or choose Don’t allow.';
       return;
@@ -281,6 +283,13 @@
       try { sessionStorage.setItem('krestrel-oauth-client-' + authorizationId, details.client.id); } catch (_) {}
     }
 
+    var app = recogniseApp(details.redirect_uri || details.redirect_url || '');
+    if (!app.trusted) {
+      $('untrusted-host').textContent = app.host || 'an unknown address';
+      show('untrusted');
+      return;
+    }
+
     var fam = await loadFamily(session.user.id);
     if (fam.blocked) { show('blocked'); return; }
     if (fam.notAllowed) { show('not-allowed'); return; }
@@ -296,18 +305,28 @@
     });
 
     var name = (details.client && details.client.name) || 'An AI app';
-    var redirect = details.redirect_uri || details.redirect_url || '';
-    var host = '';
-    try { host = new URL(redirect).hostname; } catch (_) {}
-    var known = KNOWN_HOSTS[host];
     $('client-name').textContent = name;
-    $('client-host').textContent = host || 'unknown';
-    $('client-badge').textContent = known ? 'Recognised: ' + known : (/^(127\.0\.0\.1|localhost)$/.test(host) ? 'App on your computer' : 'Unverified app');
-    $('client-badge').className = 'badge' + (known ? '' : ' warn');
-    $('unverified').hidden = !!known;
+    $('client-host').textContent = app.host;
+    $('client-badge').textContent = app.label;
+    $('client-badge').className = 'badge';
     $('signed-in-as').textContent = session.user.email || 'your account';
     renderChildren();
     show('consent');
+  }
+
+  // Same rules as mcp_redirect_trusted (migration 049).
+  function recogniseApp(redirect) {
+    var u = null;
+    try { u = new URL(redirect); } catch (_) {}
+    if (!u || u.username || u.password) return { trusted: false, host: u ? u.host : '' };
+    var host = u.hostname.toLowerCase();
+    if (u.protocol === 'https:' && !u.port && KNOWN_HOSTS[host]) {
+      return { trusted: true, host: host, label: 'Recognised: ' + KNOWN_HOSTS[host] };
+    }
+    if (u.protocol === 'http:' && /^(127\.0\.0\.1|localhost|\[::1\])$/.test(host)) {
+      return { trusted: true, host: u.host, label: 'App on your computer' };
+    }
+    return { trusted: false, host: u.host };
   }
 
   start().catch(function (err) {

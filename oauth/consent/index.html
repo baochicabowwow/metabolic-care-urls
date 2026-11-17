@@ -91,7 +91,17 @@
       <div class="actions"><button class="btn secondary" type="button" id="blocked-deny">Back to the AI app</button></div>
     </div>
 
-    <!-- This caregiver isn't allowed to connect AI apps (045) -->
+    <!-- An app Krestrel doesn't connect to (app repo migration 049) -->
+    <div id="untrusted" hidden>
+      <h1>Krestrel can’t connect to this app</h1>
+      <p>Krestrel connects only to ChatGPT, Claude and AI apps on your own computer. This request would send
+         your sign-in to <strong id="untrusted-host"></strong>.</p>
+      <p>If you didn’t just add Krestrel in ChatGPT or Claude yourself, someone may be trying to reach your
+         child’s records. Go back, and don’t sign in from that link again.</p>
+      <div class="actions"><button class="btn secondary" type="button" id="untrusted-deny">Go back</button></div>
+    </div>
+
+    <!-- This caregiver isn't allowed to connect AI apps (app repo migration 046) -->
     <div id="not-allowed" hidden>
       <h1>Ask your primary caregiver first</h1>
       <p>Your family’s primary caregiver hasn’t allowed you to connect AI apps to Krestrel. They can turn on
@@ -107,13 +117,6 @@
         <span id="client-badge" class="badge"></span>
         <span class="who">Will return to <strong id="client-host"></strong></span>
       </p>
-      <div id="unverified" class="callout warn" hidden>
-        <p>Krestrel doesn’t recognise this app. Only continue if <strong>you</strong> just added the Krestrel
-          connector in an app you trust (for example a local AI app on your own computer). If you didn’t, choose
-          <em>Don’t allow</em>. A connected app is signed in to your Krestrel account, so an untrustworthy one could
-          misuse it.</p>
-        <label class="row"><input type="checkbox" id="trust-unverified" /> I added this connector myself and trust this app</label>
-      </div>
 
       <p>Choose what this AI app may see or add. You can change or remove this anytime in the Krestrel app
          (Settings → AI &amp; connected apps). Nothing can be deleted by an AI app, and lab values it reads from a
@@ -124,10 +127,10 @@
       <div class="card">
         <label for="expiry"><strong>How long</strong></label>
         <select id="expiry">
-          <option value="">Until I disconnect it</option>
+          <option value="30" selected>30 days</option>
           <option value="90">90 days</option>
-          <option value="30">30 days</option>
           <option value="7">7 days</option>
+          <option value="">Until I disconnect it</option>
         </select>
       </div>
 
