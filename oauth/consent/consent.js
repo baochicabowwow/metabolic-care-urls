@@ -44,7 +44,7 @@
 
   var $ = function (id) { return document.getElementById(id); };
   var show = function (id) {
-    ['loading', 'fatal', 'signin', 'untrusted', 'blocked', 'not-allowed', 'consent'].forEach(function (s) { $(s).hidden = s !== id; });
+    ['loading', 'fatal', 'signin', 'untrusted', 'blocked', 'not-allowed', 'remembered', 'cancelled', 'consent'].forEach(function (s) { $(s).hidden = s !== id; });
   };
   var fatal = function (msg) { $('fatal-msg').textContent = msg; show('fatal'); };
 
@@ -180,11 +180,14 @@
     return out;
   }
 
+  // A remembered approval's redirect_url already carries the sign-in code, so
+  // following it IS approving. Cancelling therefore never follows it: it just
+  // stops here, and the unused code expires.
   async function deny() {
     if (details && details.authorization_id) {
       await sb.auth.oauth.denyAuthorization(authorizationId); // redirects back to the AI app
     } else if (details && details.redirect_url) {
-      window.location.href = details.redirect_url;
+      show('cancelled');
     } else {
       history.back();
     }
@@ -193,6 +196,11 @@
   $('blocked-deny').addEventListener('click', deny);
   $('not-allowed-deny').addEventListener('click', deny);
   $('untrusted-deny').addEventListener('click', deny);
+  $('remembered-cancel').addEventListener('click', deny);
+  $('remembered-continue').addEventListener('click', function () {
+    // Only reachable for a trusted app (start() checks first).
+    if (details && details.redirect_url) window.location.href = details.redirect_url;
+  });
 
   $('allow').addEventListener('click', async function () {
     var grants = grantsFromChoices();
@@ -205,9 +213,11 @@
     try {
       var days = parseInt($('expiry').value, 10);
       var expires = days ? new Date(Date.now() + days * 86400000).toISOString() : null;
-      var clientId = details.client ? details.client.id : clientIdFromRedirect(details.redirect_url);
-      var clientName = details.client ? details.client.name : 'AI app';
-      if (!clientId) throw new Error('Could not identify the AI app.');
+      // Only a fresh request reaches the picker (a remembered one gets the
+      // 'remembered' screen), so the client is always in the details.
+      var clientId = details.client && details.client.id;
+      var clientName = (details.client && details.client.name) || 'AI app';
+      if (!clientId || !details.authorization_id) throw new Error('Could not identify the AI app.');
       var r = await sb.rpc('mcp_set_grants', {
         p_client_id: clientId,
         p_client_name: clientName || 'AI app',
@@ -216,25 +226,13 @@
         p_expires_at: expires,
       });
       if (r.error) throw r.error;
-      if (details.authorization_id) {
-        var a = await sb.auth.oauth.approveAuthorization(authorizationId); // redirects back to the AI app
-        if (a.error) throw a.error;
-      } else {
-        window.location.href = details.redirect_url;
-      }
+      var a = await sb.auth.oauth.approveAuthorization(authorizationId); // redirects back to the AI app
+      if (a.error) throw a.error;
     } catch (err) {
       $('consent-error').textContent = (err && err.message) || 'Something went wrong. Try again.';
       $('allow').disabled = false;
     }
   });
-
-  // An already-approved app (consent remembered by Supabase) comes back with a
-  // redirect_url instead of details. We still show the picker so the parent can
-  // set what it sees; the client id is not in that response, so keep the one
-  // from a previous visit if we have it.
-  function clientIdFromRedirect() {
-    try { return sessionStorage.getItem('krestrel-oauth-client-' + authorizationId); } catch (_) { return null; }
-  }
 
   async function loadFamily(userId) {
     var m = await sb.from('circle_members')
@@ -280,9 +278,6 @@
       return;
     }
     details = d.data;
-    if (details.client && details.client.id) {
-      try { sessionStorage.setItem('krestrel-oauth-client-' + authorizationId, details.client.id); } catch (_) {}
-    }
 
     // A remembered approval comes back as the final redirect, with the code
     // attached, so only then is the query ignored.
@@ -290,6 +285,20 @@
     if (!app.trusted) {
       $('untrusted-host').textContent = app.host || 'an unknown address';
       show('untrusted');
+      return;
+    }
+
+    // An already-approved app (consent remembered by Supabase) comes back with
+    // a redirect_url that already carries its sign-in code, and no client
+    // details. There's nothing to choose: following the link connects it with
+    // the grants it already has. So say exactly that, warn, and wait for an
+    // explicit Continue.
+    if (!details.redirect_uri) {
+      var name = app.app || 'The app on your computer';
+      $('remembered-name').textContent = name;
+      $('remembered-name-2').textContent = app.app || 'this app on your computer';
+      $('remembered-host').textContent = app.host || 'your computer';
+      show('remembered');
       return;
     }
 
