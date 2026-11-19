@@ -110,6 +110,31 @@
       <div class="actions"><button class="btn secondary" type="button" id="not-allowed-deny">Back to the AI app</button></div>
     </div>
 
+    <!-- An app the parent approved before: Supabase has already issued its sign-in code -->
+    <div id="remembered" hidden>
+      <h1><span id="remembered-name"></span> is already connected</h1>
+      <p>You’ve connected <strong id="remembered-name-2"></strong> to Krestrel before, so it’s signing in again
+         without asking you to choose. It keeps what you allowed last time. It will return to
+         <strong id="remembered-host"></strong>.</p>
+      <div class="callout warn">
+        <p><strong>Only continue if you just did this yourself, in your own AI account.</strong> If someone sent
+          you this link, choose <em>Cancel</em>: continuing would connect their AI account to your child’s
+          records, with everything you allowed before.</p>
+      </div>
+      <p>To change what it can see, disconnect it in the Krestrel app (Settings → AI &amp; connected apps), then
+         connect again.</p>
+      <div class="actions">
+        <button class="btn secondary" type="button" id="remembered-cancel">Cancel</button>
+        <button class="btn" type="button" id="remembered-continue">Continue</button>
+      </div>
+    </div>
+
+    <!-- Cancelled: nothing was sent back to the AI app -->
+    <div id="cancelled" hidden>
+      <h1>Cancelled</h1>
+      <p>Nothing was shared with the AI app. You can close this page.</p>
+    </div>
+
     <!-- The consent screen -->
     <div id="consent" hidden>
       <h1>Connect <span id="client-name"></span> to Krestrel?</h1>
