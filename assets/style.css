@@ -191,6 +191,11 @@ td.no { color: var(--muted); }
 
 .mail { font-weight: 700; }
 
+/* Phone screenshots in step-by-step guides */
+.shot { margin: 14px 0 28px; }
+.shot img { display: block; width: 100%; max-width: 380px; height: auto; border-radius: 18px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+.shot figcaption { color: var(--muted); font-size: 14px; margin-top: 8px; max-width: 380px; }
+
 footer.site {
   border-top: 1px solid var(--line);
   color: var(--muted);
