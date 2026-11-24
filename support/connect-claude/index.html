@@ -46,6 +46,7 @@
       <a href="#step-5">5. Allow</a>
       <a href="#step-6">6. Check the app</a>
       <a href="#using">Using it in Claude</a>
+      <a href="#example-labs">Example: labs from a PDF</a>
       <a href="#trouble">If something goes wrong</a>
     </p>
 
@@ -69,17 +70,22 @@
     </figure>
 
     <h2 id="step-2">2. Add Krestrel as a connector in Claude</h2>
-    <p>Do this in Claude on the web (claude.ai) or in the Claude desktop app.</p>
-    <ol>
-      <li>Open <strong>Settings → Connectors</strong>.</li>
-      <li>Choose <strong>Add custom connector</strong>.</li>
-      <li>Type <strong>Krestrel</strong> as the name, and paste the address you copied as the server URL.</li>
-      <li>Leave <strong>Advanced settings</strong> empty. Claude registers itself, so there's no client ID to
-        fill in.</li>
-      <li>Choose <strong>Add</strong>. Then choose <strong>Connect</strong> next to Krestrel. A Krestrel
-        sign-in page opens.</li>
-    </ol>
-    <p>After you add Krestrel once, you can also use it in the Claude phone apps.</p>
+    <p>Do this in Claude on the web (claude.ai) or in the Claude desktop app. Connectors now live under
+      <strong>Plugins</strong>. They used to be in Settings → Connectors.</p>
+    <p>Open <strong>Plugins</strong> in the sidebar. Choose <strong>Add</strong>, then <strong>Add custom
+      connector</strong>.</p>
+    <figure class="shot">
+      <img src="img/2a-add-menu.jpg" width="470" height="344" loading="lazy"
+        alt="Claude's Plugins page with the Add menu open. The menu lists Upload plugin, Add custom connector, Create a plugin, Create with Claude and Add marketplace." />
+    </figure>
+    <p>Type <strong>Krestrel</strong> as the name, paste the address you copied, and choose
+      <strong>Continue</strong>. There's nothing else to fill in: Claude registers itself with Krestrel.</p>
+    <figure class="shot">
+      <img src="img/2b-form.jpg" width="572" height="443" loading="lazy"
+        alt="The Add custom connector form, with Krestrel as the name and the Krestrel connector address as the MCP server URL, and Cancel and Continue buttons." />
+    </figure>
+    <p>A Krestrel sign-in page opens. If it doesn't, open Krestrel in your plugins list and choose
+      <strong>Connect</strong>. After you add Krestrel once, you can also use it in the Claude phone apps.</p>
 
     <h2 id="step-3">3. Sign in with your Krestrel account</h2>
     <p>Enter the email and password you use in the Krestrel app, <strong>not</strong> your Claude login. You can
@@ -122,6 +128,13 @@
         alt="The AI & connected apps screen in Krestrel, listing Claude, connected by you, until a date 30 days later, with read access to Maya's feeds and diet, and a Disconnect button." />
       <figcaption>Tap <strong>Disconnect</strong> to cut Claude off at any time.</figcaption>
     </figure>
+    <p>In Claude, open Krestrel from <strong>Plugins</strong>. It should say <strong>Connected</strong> and list
+      the Krestrel tools Claude may use. The list depends on what you allowed in step 4.</p>
+    <figure class="shot">
+      <img src="img/2c-connected.jpg" width="470" height="644" loading="lazy"
+        alt="Claude's page for the Krestrel connector, showing Connected, the connector URL, the read-only tools such as get_care_summary and list_lab_results, and the write tools add_appointment_question, log_medicine_dose and propose_lab_results." />
+      <figcaption>This connector was named krestrel-testing. Yours shows the name you typed.</figcaption>
+    </figure>
 
     <h2 id="using">Using Krestrel in Claude</h2>
     <p>You don't need special commands. Ask in plain words, and Claude uses Krestrel when the question is about
@@ -134,22 +147,48 @@
       <li>"Here's a photo of Maya's lab report. Add the results to Krestrel."</li>
       <li>"What does Maya's emergency plan say to do if she's vomiting?"</li>
     </ul>
+    <h3 id="example-labs">Example: add lab results from a PDF</h3>
+    <p>Say the clinic emailed Maya's latest amino acid results as a PDF.</p>
+    <ol>
+      <li>Start a new chat in Claude. Attach the PDF with the <strong>+</strong> button, or drag it in.</li>
+      <li>Type: <em>"Add these lab results to Maya's Krestrel record."</em></li>
+      <li>Claude reads the values and asks to use Krestrel's <strong>Propose lab results (draft)</strong> tool.
+        Allow it.</li>
+      <li>Claude says it saved the results <strong>as a draft</strong>. They aren't in Maya's lab history
+        yet.</li>
+      <li>In the Krestrel app, open <strong>Settings → AI &amp; connected apps</strong>. Tap <strong>Lab results
+        for Maya</strong> in the <strong>To review</strong> card at the top. Pull down to refresh if it isn't
+        there yet.</li>
+      <li>Check each value against the PDF. Switch off any that look wrong, then tap <strong>Save to
+        Labs</strong>. Or tap <strong>Discard</strong> to throw the draft away.</li>
+    </ol>
+    <p>Only the values you save go into Maya's lab history. This step is deliberate: an AI can misread a
+      number or a unit, and lab values matter.</p>
+
     <div class="card">
       <h3>What Claude can and can't do</h3>
       <ul>
-        <li><strong>Claude asks first.</strong> Before it uses a Krestrel tool, Claude shows what it wants to do
-          and asks for your OK. You can allow it once or always. To change that later, open Krestrel in
-          <strong>Settings → Connectors</strong> in Claude.</li>
-        <li><strong>On or off for each chat.</strong> Use the tools button under the message box to turn
-          Krestrel on or off in the current chat.</li>
+        <li><strong>Claude asks first, in Manual mode.</strong> The hand icon under the message box shows
+          Claude's mode. In <strong>Manual</strong>, Claude asks for your OK before it uses a Krestrel tool. In
+          <strong>Auto</strong>, it may go ahead without asking. To be asked every time, open Krestrel in
+          <strong>Plugins</strong>, go to <strong>Permissions</strong>, and choose <strong>Always ask</strong>.</li>
+        <li><strong>On or off for each chat.</strong> Use the <strong>+</strong> button under the message box
+          (Add files, connectors, and more) to turn Krestrel on or off in the current chat.</li>
         <li><strong>Only what you allowed.</strong> Claude sees only the children and areas you chose in step
           4. Adding entries needs <strong>Read &amp; add</strong>.</li>
-        <li><strong>Lab values wait for you.</strong> Results Claude reads from a document go to the Krestrel
-          app as a draft. They're saved only after you check and confirm them there.</li>
+        <li><strong>Lab results wait for you.</strong> Lab values Claude reads from a document stay a draft
+          until you confirm them in Krestrel. See <a href="#example-labs">the example above</a>.</li>
         <li><strong>Nothing gets deleted.</strong> An AI app can't delete anything in Krestrel.</li>
         <li><strong>Not medical advice.</strong> Check anything important with your care team.</li>
       </ul>
     </div>
+
+    <figure class="shot">
+      <img src="img/7-permissions.jpg" width="470" height="464" loading="lazy"
+        alt="The Permissions tab for the Krestrel connector in Claude. It explains Manual and Auto modes and shows each tool set to Needs approval." />
+      <figcaption>Krestrel's Permissions tab in Claude. Each tool can be set to Needs approval or Always
+        ask.</figcaption>
+    </figure>
 
     <h2 id="trouble">If something goes wrong</h2>
     <h3>The sign-in page says "Krestrel can't connect to this app"</h3>
@@ -159,14 +198,14 @@
     <p>A primary caregiver needs to turn AI apps on for the family in <strong>Settings → AI &amp; connected
       apps</strong>, or allow you under Circle. See <a href="#before">Before you start</a>.</p>
     <h3>Claude says Krestrel needs to reconnect</h3>
-    <p>The connection reached the end of the time you chose. In Claude, open <strong>Settings →
-      Connectors</strong> and choose <strong>Connect</strong> next to Krestrel, then repeat steps 3 to 5.</p>
+    <p>The connection reached the end of the time you chose. In Claude, open Krestrel in
+      <strong>Plugins</strong> and choose <strong>Connect</strong>, then repeat steps 3 to 5.</p>
     <h3>I can't find "Add custom connector"</h3>
-    <p>Your Claude plan may not include custom connectors, or your organisation may manage them. Check with your
-      Claude plan or your Claude admin.</p>
+    <p>Look under <strong>Plugins → Add</strong>, not Settings. If it isn't there, your Claude plan may not
+      include custom connectors, or your organisation may manage them.</p>
     <h3>How do I disconnect?</h3>
     <p>In Krestrel, use <strong>Settings → AI &amp; connected apps → Disconnect</strong>. That takes effect right
-      away. You can also remove the connector in Claude's <strong>Settings → Connectors</strong>. Read more in the
+      away. You can also remove the connector in Claude, under <strong>Plugins</strong>. Read more in the
       <a href="../../privacy/#ai-apps">Privacy Policy</a>.</p>
 
     <p>Still stuck? Email <a class="mail" href="mailto:support@krestrel.com">support@krestrel.com</a>.</p>
