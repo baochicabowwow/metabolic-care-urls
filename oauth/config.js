@@ -4,8 +4,8 @@
 // PRODUCTION: fill these in before publishing (Supabase dashboard → Project
 // Settings → API). They must be the same project the Krestrel app uses.
 window.KRESTREL_SUPABASE = {
-  url: 'https://YOUR-PROJECT-REF.supabase.co',
-  anonKey: 'YOUR-ANON-OR-PUBLISHABLE-KEY',
+  url: 'https://nvfffzhngzhsrrllwzxy.supabase.co',
+  anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im52ZmZmemhuZ3poc3JybGx3enh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE5MTU4NDMsImV4cCI6MjA5NzQ5MTg0M30.3MprRhFyh5IKmCRzlTUnCf9HPmPeaahfwcLtqgtEW70',
 };
 
 // Local testing (`supabase start` + serving this repo on http://127.0.0.1:3000):
