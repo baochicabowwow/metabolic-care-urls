@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Connect Claude to Krestrel — Krestrel</title>
+  <meta name="description" content="Step-by-step, with screenshots: add Krestrel to Claude as a connector, choose what Claude may see, and ask Claude about your child's care logs." />
+  <link rel="stylesheet" href="../../assets/style.css" />
+  <link rel="icon" href="../../assets/brand/icon.svg" type="image/svg+xml" />
+  <link rel="icon" href="../../assets/brand/favicon-32.png" sizes="32x32" />
+  <link rel="icon" href="../../assets/brand/favicon-16.png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="../../assets/brand/apple-touch-icon.png" />
+  <meta name="theme-color" content="#4E6E8C" />
+  <meta property="og:image" content="https://www.krestrel.com/assets/brand/web-icon-512.png" />
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="../../"><img class="logo" src="../../assets/brand/icon.svg" alt="" width="32" height="32" /> Krestrel</a>
+      <nav>
+        <a href="../../blog/">Blog</a>
+        <a href="../../privacy/">Privacy</a>
+        <a href="../../terms/">Terms</a>
+        <a href="../">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Connect Claude to Krestrel</h1>
+    <p class="updated">Step by step, with screenshots. It takes about three minutes. The screenshots show a demo
+      family.</p>
+
+    <div class="callout warn">
+      <strong>Only connect from your own Claude account.</strong> Start each step yourself. If someone sends you a
+      Krestrel sign-in link, don't approve it, even if it says Claude. Approving it would connect
+      <em>their</em> AI account to your child's records.
+    </div>
+
+    <p class="toc">
+      <a href="#before">Before you start</a>
+      <a href="#step-1">1. Copy the address</a>
+      <a href="#step-2">2. Add it in Claude</a>
+      <a href="#step-3">3. Sign in</a>
+      <a href="#step-4">4. Choose access</a>
+      <a href="#step-5">5. Allow</a>
+      <a href="#step-6">6. Check the app</a>
+      <a href="#using">Using it in Claude</a>
+      <a href="#trouble">If something goes wrong</a>
+    </p>
+
+    <h2 id="before">Before you start</h2>
+    <ul>
+      <li>You need a <strong>Krestrel account</strong> and the Krestrel app on your phone.</li>
+      <li>AI apps must be turned on for your family. If you're not the primary caregiver, a primary caregiver
+        has to allow you first. In the Krestrel app, they open <strong>Settings</strong>, tap your name under
+        Circle, and turn on <strong>Connect AI apps</strong>.</li>
+      <li>You need a <strong>Claude</strong> account whose plan lets you add custom connectors. On a Team or
+        Enterprise plan, an owner may need to add the connector for your organisation first.</li>
+    </ul>
+
+    <h2 id="step-1">1. Copy the connector address in Krestrel</h2>
+    <p>In the Krestrel app, open <strong>Settings → AI &amp; connected apps</strong>. Under <strong>How to
+      connect</strong>, tap <strong>Copy</strong> next to the connector address.</p>
+    <figure class="shot">
+      <img src="img/1-copy-address.jpg" width="786" height="700" loading="lazy"
+        alt="The How to connect card in the Krestrel app. It shows the connector address with a Copy button, then short instructions for ChatGPT and Claude." />
+      <figcaption>The address is the same for everyone. It isn't a password.</figcaption>
+    </figure>
+
+    <h2 id="step-2">2. Add Krestrel as a connector in Claude</h2>
+    <p>Do this in Claude on the web (claude.ai) or in the Claude desktop app.</p>
+    <ol>
+      <li>Open <strong>Settings → Connectors</strong>.</li>
+      <li>Choose <strong>Add custom connector</strong>.</li>
+      <li>Type <strong>Krestrel</strong> as the name, and paste the address you copied as the server URL.</li>
+      <li>Leave <strong>Advanced settings</strong> empty. Claude registers itself, so there's no client ID to
+        fill in.</li>
+      <li>Choose <strong>Add</strong>. Then choose <strong>Connect</strong> next to Krestrel. A Krestrel
+        sign-in page opens.</li>
+    </ol>
+    <p>After you add Krestrel once, you can also use it in the Claude phone apps.</p>
+
+    <h2 id="step-3">3. Sign in with your Krestrel account</h2>
+    <p>Enter the email and password you use in the Krestrel app, <strong>not</strong> your Claude login. You can
+      also ask for a sign-in code by email.</p>
+    <figure class="shot">
+      <img src="img/3-sign-in.jpg" width="786" height="1240" loading="lazy"
+        alt="The Sign in to Krestrel page, with Email and Password fields, a Sign in button and an Email me a sign-in code instead link." />
+      <figcaption>The page is on krestrel.com. Check the address bar before you type your password.</figcaption>
+    </figure>
+
+    <h2 id="step-4">4. Check it's Claude, then choose what it may see</h2>
+    <p>First, check the top of the page. It should say <strong>Connect Claude to Krestrel?</strong> with
+      <strong>Recognised: Claude</strong>, and it should say it will return to <strong>claude.ai</strong>. If it
+      names anything else, or you didn't just start this yourself, choose <strong>Don't allow</strong>.</p>
+    <p>Then, for each child, choose what Claude may do in each area: <strong>No access</strong>,
+      <strong>Read</strong>, or <strong>Read &amp; add</strong>. Untick a child to keep that child out completely.
+      Give only what you need. You can change it later.</p>
+    <figure class="shot">
+      <img src="img/4-choose-access.jpg" width="786" height="1630" loading="lazy"
+        alt="The Connect Claude to Krestrel? page. A Recognised: Claude badge, a warning to continue only if you started this yourself, and a Share Maya section with Read chosen for feeds and for diet." />
+      <figcaption>In this example, Claude may read Maya's feeds and diet but can't add anything.</figcaption>
+    </figure>
+
+    <h2 id="step-5">5. Choose how long, then Allow</h2>
+    <p>Pick how long the connection lasts. It's 30 days unless you change it. Read the note under
+      <strong>Before you allow</strong>, then choose <strong>Allow</strong>. You'll go back to Claude, and
+      Krestrel will show as connected.</p>
+    <figure class="shot">
+      <img src="img/5-allow.jpg" width="786" height="870" loading="lazy"
+        alt="The bottom of the consent page: How long set to 30 days, a Before you allow note about the AI company's privacy terms, and Don't allow and Allow buttons." />
+      <figcaption>Once information reaches Claude, Anthropic's privacy terms cover it, not Krestrel's.</figcaption>
+    </figure>
+
+    <h2 id="step-6">6. Check the connection in Krestrel</h2>
+    <p>Back in <strong>Settings → AI &amp; connected apps</strong>, Claude now appears with what it may see and
+      when access ends. If it isn't there yet, pull down to refresh. Primary caregivers also see the AI apps that
+      other caregivers have connected.</p>
+    <figure class="shot">
+      <img src="img/6-connected.jpg" width="786" height="815" loading="lazy"
+        alt="The AI & connected apps screen in Krestrel, listing Claude, connected by you, until a date 30 days later, with read access to Maya's feeds and diet, and a Disconnect button." />
+      <figcaption>Tap <strong>Disconnect</strong> to cut Claude off at any time.</figcaption>
+    </figure>
+
+    <h2 id="using">Using Krestrel in Claude</h2>
+    <p>You don't need special commands. Ask in plain words, and Claude uses Krestrel when the question is about
+      your child's care. Naming Krestrel helps if Claude doesn't pick it up:</p>
+    <ul>
+      <li>"Using Krestrel, how was Maya's protein this week?"</li>
+      <li>"How did Maya sleep over the last three nights?"</li>
+      <li>"When is Maya's next appointment? Add a question for it: should we change her evening formula?"</li>
+      <li>"Log a 120 ml bottle for Maya at 7:30 this morning."</li>
+      <li>"Here's a photo of Maya's lab report. Add the results to Krestrel."</li>
+      <li>"What does Maya's emergency plan say to do if she's vomiting?"</li>
+    </ul>
+    <div class="card">
+      <h3>What Claude can and can't do</h3>
+      <ul>
+        <li><strong>Claude asks first.</strong> Before it uses a Krestrel tool, Claude shows what it wants to do
+          and asks for your OK. You can allow it once or always. To change that later, open Krestrel in
+          <strong>Settings → Connectors</strong> in Claude.</li>
+        <li><strong>On or off for each chat.</strong> Use the tools button under the message box to turn
+          Krestrel on or off in the current chat.</li>
+        <li><strong>Only what you allowed.</strong> Claude sees only the children and areas you chose in step
+          4. Adding entries needs <strong>Read &amp; add</strong>.</li>
+        <li><strong>Lab values wait for you.</strong> Results Claude reads from a document go to the Krestrel
+          app as a draft. They're saved only after you check and confirm them there.</li>
+        <li><strong>Nothing gets deleted.</strong> An AI app can't delete anything in Krestrel.</li>
+        <li><strong>Not medical advice.</strong> Check anything important with your care team.</li>
+      </ul>
+    </div>
+
+    <h2 id="trouble">If something goes wrong</h2>
+    <h3>The sign-in page says "Krestrel can't connect to this app"</h3>
+    <p>Krestrel only connects to ChatGPT, Claude and AI apps running on your own computer. Go back, and don't sign
+      in from that link again. Start again from step 2 in your own Claude account.</p>
+    <h3>The page says "AI apps are turned off" or "Ask your primary caregiver first"</h3>
+    <p>A primary caregiver needs to turn AI apps on for the family in <strong>Settings → AI &amp; connected
+      apps</strong>, or allow you under Circle. See <a href="#before">Before you start</a>.</p>
+    <h3>Claude says Krestrel needs to reconnect</h3>
+    <p>The connection reached the end of the time you chose. In Claude, open <strong>Settings →
+      Connectors</strong> and choose <strong>Connect</strong> next to Krestrel, then repeat steps 3 to 5.</p>
+    <h3>I can't find "Add custom connector"</h3>
+    <p>Your Claude plan may not include custom connectors, or your organisation may manage them. Check with your
+      Claude plan or your Claude admin.</p>
+    <h3>How do I disconnect?</h3>
+    <p>In Krestrel, use <strong>Settings → AI &amp; connected apps → Disconnect</strong>. That takes effect right
+      away. You can also remove the connector in Claude's <strong>Settings → Connectors</strong>. Read more in the
+      <a href="../../privacy/#ai-apps">Privacy Policy</a>.</p>
+
+    <p>Still stuck? Email <a class="mail" href="mailto:support@krestrel.com">support@krestrel.com</a>.</p>
+
+    <p style="margin-top:30px;"><a class="btn secondary" href="../#ai-apps">← Back to Support</a></p>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <nav>
+        <a href="../../blog/">Blog</a>
+        <a href="../../privacy/">Privacy</a>
+        <a href="../../terms/">Terms</a>
+        <a href="../">Support</a>
+      </nav>
+      <span class="copy">© 2026 Krestrel</span>
+    </div>
+  </footer>
+</body>
+</html>
