@@ -267,6 +267,16 @@
     return { blocked: false, kids: kids };
   }
 
+  // Supabase Auth refuses a token whose session no longer exists (403
+  // session_not_found), and supabase-js reports that as AuthSessionMissingError;
+  // an expired or bad token is a 401.
+  function signInEnded(err) {
+    if (!err) return false;
+    var code = err.code;
+    return err.name === 'AuthSessionMissingError' || code === 'session_not_found' || code === 'session_expired' ||
+      code === 'bad_jwt' || code === 'refresh_token_not_found' || err.status === 401;
+  }
+
   async function start() {
     show('loading');
     var s = await sb.auth.getSession();
@@ -274,6 +284,15 @@
     if (!session) { show('signin'); return; }
 
     var d = await sb.auth.oauth.getAuthorizationDetails(authorizationId);
+    if (d.error && signInEnded(d.error)) {
+      // The sign-in saved in this browser was ended elsewhere (signing out on
+      // another device, "sign out everywhere", a password change). The request
+      // itself is still good: sign in again and carry on with it.
+      await sb.auth.signOut({ scope: 'local' });
+      $('signin-note').hidden = false;
+      show('signin');
+      return;
+    }
     if (d.error) {
       fatal('This connection request has expired or was already used. Start connecting again from your AI app.');
       return;
