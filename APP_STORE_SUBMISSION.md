@@ -81,6 +81,24 @@ All user-entered data is **linked to the user's identity**; crash data is **not 
   **protein range** (not amino-acid limits, or the reviewer lands on the "Switch to protein"
   prompt), meals whose foods carry protein, and one dietitian estimate factor so a
   "≈ … mg lysine (estimate)" line shows.
+- Since 1.6.0, also add the connected-AI-app seed under **AI features → Demo account seed**
+  below, and one lab result saved as **less than** (e.g. `<2`) so that display shows.
+
+## What's New (version 1.6.0)
+
+```
+Connect an AI assistant. Link your own ChatGPT or Claude account to ask about your child's logs or add entries by chat. You choose, per child and per area, what it can see or add, and you can change or remove access anytime in Settings → AI & connected apps. Lab values an AI reads from a report wait for you to confirm.
+
+• Primary caregivers choose which caregivers may connect AI apps (off by default).
+• Lab results printed as "less than" (like <2) can now be saved, and ranges like "<5" entered as an upper limit.
+• Busy moments on the Timeline day view are easier to read: overlapping events group into one tappable chip, you can pinch to zoom, and a long-press shows an event's full details.
+• Late-night entries that count toward the previous day now show their weekday.
+• Fixed: emailed history exports now include the whole date range. Large exports used to stop early.
+```
+
+Naming ChatGPT and Claude here is descriptive and accurate (they're the only AI apps that can
+connect). They stay out of the **name, subtitle and keywords** (2.3 / 5.2). Stricter option:
+"Connect an AI assistant that supports MCP".
 
 ## Store listing
 
@@ -153,11 +171,13 @@ the description names (the curated food list must be loaded and published first)
   flag-gated off and its native module is excluded from the build (re-add the permissions
   when the feature ships)
 
-## AI features (connected AI apps / MCP) — add when that build ships
+## AI features (connected AI apps / MCP) — ships in 1.6.0
 
 Full background: `docs/MCP_ARCHITECTURE.md` §9 in the app repo. Paste the
-items below into App Store Connect for the first build that includes
-**Settings → AI & connected apps** (feature flag `aiConnections`).
+items below into App Store Connect for **1.6.0**, the first build with
+**Settings → AI & connected apps** turned on (feature flag `aiConnections: true`).
+Go-live steps A–I in the app repo's `docs/MCP_SETUP.md` must be done before submitting:
+the reviewer has to be able to reach and use the feature.
 
 The app itself sends nothing to an AI company. The optional Claude mode for reading lab PDFs
 was removed, so there's no in-app AI processing to disclose.
@@ -174,24 +194,31 @@ Re-confirm these answers with counsel when the privacy policy is reviewed.
 
 ### App Review Information → Notes (append)
 
-> **Connected AI apps.** Parents can optionally connect
-> their own ChatGPT or Claude account. The connection is started from inside that
-> AI app (not from this app), signs in on our website, and shows a consent screen
-> where the parent picks which children and which data (e.g. "labs: read",
-> "feeds: read & add") to share. Settings → AI & connected apps lists each
-> connection, what it can access and its recent activity, and lets the parent
-> revoke it. A primary caregiver decides per caregiver whether they may connect
-> AI apps at all (off by default). AI-proposed lab values are drafts the parent
-> must confirm. The app itself sends nothing to any AI company. The demo
-> account includes one sample connection, activity entries and a pending draft so
-> these screens can be reviewed. No data is used for advertising or tracking.
+> **Connected AI apps.** Parents can optionally connect their own ChatGPT or
+> Claude account. The connection is started from inside that AI app (not from this
+> app), signs in on our website, and shows a consent screen that names the app and
+> lists, per child and per area (e.g. "Labs: read", "Diet & protein: read & add"),
+> what it may see or add. Nothing is shared before the parent approves. With "read &
+> add" access an AI app can add new entries such as a meal, feed, medicine dose,
+> provider or appointment. These appear in the app under the parent who connected it,
+> and the parent can edit or delete them there. An AI app can never change or delete
+> existing entries or account settings. Lab values an AI app reads from a report are
+> saved only as drafts the parent must confirm. Settings → AI & connected apps lists
+> each connection, what it can access and its recent activity, and lets the parent
+> change access or disconnect. A primary caregiver can turn AI apps off for the whole
+> family and decides per caregiver whether they may connect at all (off by default).
+> The app itself sends nothing to any AI company. The demo account includes a sample
+> connection, activity entries and a pending lab draft so these screens can be
+> reviewed. No data is used for advertising or tracking.
 
 ### Demo account seed (add)
 
-- One `mcp_grants` connection, e.g. client name "Claude (demo)": feeds read and
-  write, labs read and write.
+- Family AI switch **on**, and the demo primary's own **Connect AI apps** permission on.
+- One `mcp_grants` connection, e.g. client name "Claude (demo)": Diet & protein, feeds and
+  labs set to read & add.
 - A few `mcp_audit` rows.
 - One pending `ai_drafts` row of kind `lab_results`.
+- Optional: one meal logged by the demo connection, so an AI-added entry shows in the meal log.
 
 ### Metadata
 
@@ -204,7 +231,7 @@ Re-confirm these answers with counsel when the privacy policy is reviewed.
 These are server-side changes, so they need no new build or App Review:
 
 - the MCP gateway and its updates;
-- the database migrations (045–049 in the app repo), the access token hook and turning on dynamic client registration;
+- the database migrations (045–054 in the app repo), the access token hook and turning on dynamic client registration;
 - the consent page;
 - the planned switch to asymmetric JWT signing keys.
 
