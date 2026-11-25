@@ -17,7 +17,9 @@
   'use strict';
 
   // 2026-11b: Diet & protein offers "Read & add" (meal suggestions to check).
-  var CONSENT_VERSION = 'mcp-consent-2026-11b';
+  // 2026-11c: "Read & add" logs meals directly (app migration 054), and can add a
+  // food that isn't in the family's list.
+  var CONSENT_VERSION = 'mcp-consent-2026-11c';
 
   // AI apps Krestrel connects to, by their exact OAuth callback. Must match
   // mcp_redirect_trusted in the app repo's migration 049, which is what
@@ -35,7 +37,7 @@
 
   var CAPS = [
     { key: 'feeds', label: 'Feeds, sleep, diapers & growth', hint: 'Bottles, nursing, sleep, diapers, temperature, weight', canWrite: true, def: 'read' },
-    { key: 'diet', label: 'Diet & protein', hint: 'Meals, daily protein, the protein range from your care team. “Read & add” lets it suggest meals for you to check', canWrite: true, def: 'read' },
+    { key: 'diet', label: 'Diet & protein', hint: 'Meals, daily protein, the protein range from your care team. “Read & add” lets it log meals, and add a food that isn’t in your list', canWrite: true, def: 'read' },
     { key: 'labs', label: 'Labs', hint: 'Blood results and target ranges. “Read & add” lets it propose values for you to confirm', canWrite: true, def: 'none', perm: 'can_view_labs' },
     { key: 'meds', label: 'Medicines', hint: 'Medication list and doses given', canWrite: true, def: 'none' },
     { key: 'appointments', label: 'Appointments', hint: 'Providers, visits, questions for the next visit', canWrite: true, def: 'none', perm: 'can_view_appointments' },
