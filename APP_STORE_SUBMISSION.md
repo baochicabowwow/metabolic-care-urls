@@ -87,14 +87,20 @@ All user-entered data is **linked to the user's identity**; crash data is **not 
 ## What's New (version 1.6.0)
 
 ```
-Connect an AI assistant. Link your own ChatGPT or Claude account to ask about your child's logs or add entries by chat. You choose, per child and per area, what it can see or add, and you can change or remove access anytime in Settings → AI & connected apps. Lab values an AI reads from a report wait for you to confirm.
-
+Connect an AI assistant. Link your own ChatGPT or Claude account to ask about your child's logs or add entries by chat. You choose, per child and per area, what it can see or add, and you can change or remove access anytime in Settings, under AI & connected apps. Lab values an AI reads from a report wait for you to confirm.
 • Primary caregivers choose which caregivers may connect AI apps (off by default).
-• Lab results printed as "less than" (like <2) can now be saved, and ranges like "<5" entered as an upper limit.
+• Lab results reported as "less than" a value can now be saved, and a range with only an upper limit can be entered.
+
+Quality of life improvements:
 • Busy moments on the Timeline day view are easier to read: overlapping events group into one tappable chip, you can pinch to zoom, and a long-press shows an event's full details.
 • Late-night entries that count toward the previous day now show their weekday.
+
+Bug Fixes:
 • Fixed: emailed history exports now include the whole date range. Large exports used to stop early.
 ```
+
+App Store Connect rejects this field with "invalid characters" if it contains `<` or `>`
+(it reads them as HTML), so spell out "less than" and avoid arrows like `→`.
 
 Naming ChatGPT and Claude here is descriptive and accurate (they're the only AI apps that can
 connect). They stay out of the **name, subtitle and keywords** (2.3 / 5.2). Stricter option:
