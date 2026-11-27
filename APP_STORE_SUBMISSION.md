@@ -83,6 +83,38 @@ All user-entered data is **linked to the user's identity**; crash data is **not 
   "≈ … mg lysine (estimate)" line shows.
 - Since 1.6.0, also add the connected-AI-app seed under **AI features → Demo account seed**
   below, and one lab result saved as **less than** (e.g. `<2`) so that display shows.
+- Since 1.6.1, the demo child needs a **date of birth under 5 years**, **sex** set to male or
+  female, and a few weight and height entries, so the growth chart shows WHO percentile curves
+  instead of the plain trend line and a "why curves are missing" message.
+
+## What's New (version 1.6.1)
+
+```
+WHO growth charts
+• The growth chart now shows WHO percentile curves for weight, height and head size from birth to age 5, along with your child's current percentile. Reports show them too. Add your child's date of birth and sex on their profile to see them.
+• You can now set a child's sex when adding a child or on their profile. It's optional and only chooses the boys' or girls' WHO chart.
+
+Quality of life improvements:
+• Your child's current weight is now the newest weight in the growth log, whoever logged it, so per-kg protein limits stay up to date.
+• Busy moments on the Timeline day view are easier to read: overlapping events group into one tappable chip, you can pinch to zoom, and a long-press shows an event's full details.
+• Late-night entries that count toward the previous day now show their weekday.
+• Day start in Settings is now a simple dropdown.
+
+Bug Fixes:
+• Reports now use the lb / in units you chose on the Growth screen.
+• Growth chart labels no longer overlap.
+• Logging a weight as a caregiver no longer shows an error after it saved.
+• Connected AI apps work again after you switch Krestrel accounts. If yours still can't find your child, refresh or reconnect it once.
+```
+
+The two Timeline bullets were also in the 1.6.0 notes, but #184 missed the 1.6.0 build, so
+this is the release that actually delivers them. Drop them if that repetition bothers you.
+
+Append to **App Review Information → Notes** for this version:
+
+> 1.6.1 adds WHO Child Growth Standards percentile curves to the growth chart (Trackers →
+> Growth and Reports). They need the child's date of birth and sex, which are set on the demo
+> child. Percentiles are shown for reference only; the app makes no medical assessment.
 
 ## What's New (version 1.6.0)
 
