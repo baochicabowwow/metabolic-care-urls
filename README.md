@@ -33,11 +33,6 @@ Public URLs are on the `www.krestrel.com` custom domain (`CNAME`).
 (`.k-phone`, `object-fit: cover; object-position: top`). Pages pick light/dark with `<picture>`.
 Names: `today`, `diet`, `feeds`, `labs`, `growth`, `emergency`, `circle`, `ai`, `aiaccess`.
 
-> **The current images are drawn placeholders with a fictional child**, not real captures. Replace
-> them with iOS Simulator captures (iPhone 6.9", status bar at 9:41) of an account holding only
-> fictional data, resized to 786 px wide, same file names. No page changes are needed.
-> Regenerate `assets/og/*.png` (1200×630 share images) afterwards if their screens changed.
-
 ## SEO and AI search
 
 - Every page: canonical URL, Open Graph/Twitter tags with a 1200×630 image in `assets/og/`, the
