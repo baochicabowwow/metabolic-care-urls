@@ -129,13 +129,13 @@ body.k :focus-visible, .k-header :focus-visible, .k-footer :focus-visible { outl
 .k-float small { display: block; font-size: 11.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--k-muted); font-weight: 900; margin-bottom: 2px; }
 .k-float b { font-size: 22px; font-weight: 900; letter-spacing: -0.02em; }
 .k-float.k-f1 { left: -8%; top: 50%; }
-.k-float.k-f2 { right: -8%; bottom: 18%; }
+.k-float.k-f2 { right: -8%; top: 30%; }
 .k-float .k-band { margin-top: 6px; position: relative; width: 150px; height: 8px; border-radius: 99px; background: var(--k-alt); }
 .k-float .k-band i { position: absolute; top: 0; bottom: 0; border-radius: 99px; }
 @media (max-width: 860px) {
   .k-hero { grid-template-columns: 1fr; }
   .k-float.k-f1 { left: 0; top: 52%; }
-  .k-float.k-f2 { right: 0; bottom: 8%; }
+  .k-float.k-f2 { right: 0; top: 30%; }
 }
 
 /* ---------- phone frame ---------- */
