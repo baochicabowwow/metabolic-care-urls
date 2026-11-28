@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.krestrel.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.krestrel.com/blog/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.krestrel.com/blog/day-start-hour/</loc><lastmod>2026-10-23</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.krestrel.com/blog/appointment-management/</loc><lastmod>2026-08-21</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.krestrel.com/blog/tracking-lysine/</loc><lastmod>2026-10-23</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.krestrel.com/support/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.krestrel.com/support/connect-claude/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.krestrel.com/</loc><lastmod>2026-11-28</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.krestrel.com/features/</loc><lastmod>2026-11-28</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.krestrel.com/ai/</loc><lastmod>2026-11-28</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.krestrel.com/blog/</loc><lastmod>2026-11-28</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.krestrel.com/blog/ai-meal-logging/</loc><lastmod>2026-11-28</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.krestrel.com/blog/krestrel-vs-flok-vs-metabolic-diet-app/</loc><lastmod>2026-11-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.krestrel.com/blog/claude-chatgpt-care-log/</loc><lastmod>2026-11-28</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.krestrel.com/blog/day-start-hour/</loc><lastmod>2026-11-28</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.krestrel.com/blog/appointment-management/</loc><lastmod>2026-11-28</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.krestrel.com/blog/tracking-lysine/</loc><lastmod>2026-11-28</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.krestrel.com/support/</loc><lastmod>2026-11-28</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.krestrel.com/support/connect-claude/</loc><lastmod>2026-11-28</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.krestrel.com/support/connect-chatgpt/</loc><lastmod>2026-11-28</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.krestrel.com/privacy/</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
   <url><loc>https://www.krestrel.com/terms/</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
 </urlset>

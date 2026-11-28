@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Connect ChatGPT to Krestrel — Krestrel</title>
+  <meta name="description" content="Step by step: add Krestrel to ChatGPT as a connector, choose what ChatGPT may see for each child, and ask about or add to your child's care log." />
+  <link rel="canonical" href="https://www.krestrel.com/support/connect-chatgpt/" />
+  <link rel="stylesheet" href="../../assets/style.css" />
+  <link rel="icon" href="../../assets/brand/icon.svg" type="image/svg+xml" />
+  <link rel="icon" href="../../assets/brand/favicon-32.png" sizes="32x32" />
+  <link rel="icon" href="../../assets/brand/favicon-16.png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="../../assets/brand/apple-touch-icon.png" />
+  <meta name="theme-color" content="#4E6E8C" />
+  <meta property="og:image" content="https://www.krestrel.com/assets/og/ai.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Connect ChatGPT to Krestrel",
+    "totalTime": "PT3M",
+    "step": [
+      { "@type": "HowToStep", "name": "Copy the connector address", "text": "In the Krestrel app, open Settings → AI & connected apps and copy the connector address." },
+      { "@type": "HowToStep", "name": "Turn on developer mode in ChatGPT", "text": "In ChatGPT settings, open the apps or connectors section, then Advanced settings, and turn on Developer mode." },
+      { "@type": "HowToStep", "name": "Create the connector", "text": "Create a connector named Krestrel, paste the address as the MCP server URL, choose OAuth, and create it." },
+      { "@type": "HowToStep", "name": "Sign in and choose access", "text": "Sign in with your Krestrel account, check the page says ChatGPT, choose what ChatGPT may see for each child, then Allow." }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="../../"><img class="logo" src="../../assets/brand/icon.svg" alt="" width="32" height="32" /> Krestrel</a>
+      <nav>
+        <a href="../../features/">Features</a>
+        <a href="../../blog/">Blog</a>
+        <a href="../../privacy/">Privacy</a>
+        <a href="../../terms/">Terms</a>
+        <a href="../">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Connect ChatGPT to Krestrel</h1>
+    <p class="updated">Step by step. It takes about three minutes. Last updated 28 November 2026.</p>
+
+    <div class="callout warn">
+      <strong>Only connect from your own ChatGPT account.</strong> Start each step yourself. If someone sends you a
+      Krestrel sign-in link, don't approve it, even if it says ChatGPT. Approving it would connect
+      <em>their</em> AI account to your child's records.
+    </div>
+
+    <div class="callout">
+      <strong>ChatGPT renames its menus often.</strong> OpenAI has called these "connectors", "apps" and
+      "plugins" at different times. If a label below doesn't match what you see, look for <em>Developer mode</em>
+      and a way to add or create a custom connector. Not every ChatGPT plan offers developer mode.
+    </div>
+
+    <p class="toc">
+      <a href="#before">Before you start</a>
+      <a href="#step-1">1. Copy the address</a>
+      <a href="#step-2">2. Developer mode</a>
+      <a href="#step-3">3. Create the connector</a>
+      <a href="#step-4">4. Sign in</a>
+      <a href="#step-5">5. Choose access and allow</a>
+      <a href="#step-6">6. Check the app</a>
+      <a href="#using">Using it in ChatGPT</a>
+      <a href="#trouble">If something goes wrong</a>
+    </p>
+
+    <h2 id="before">Before you start</h2>
+    <ul>
+      <li>You need a <strong>Krestrel account</strong> and the Krestrel app on your phone.</li>
+      <li>AI apps must be turned on for your family. If you're not the primary caregiver, a primary caregiver
+        has to allow you first. In the Krestrel app, they open <strong>Settings</strong>, tap your name under
+        Circle, and turn on <strong>Connect AI apps</strong>.</li>
+      <li>You need a <strong>ChatGPT</strong> account whose plan allows developer mode and custom connectors. On a
+        workspace plan, an admin may need to allow it first.</li>
+    </ul>
+
+    <h2 id="step-1">1. Copy the connector address in Krestrel</h2>
+    <p>In the Krestrel app, open <strong>Settings → AI &amp; connected apps</strong>. Under <strong>How to
+      connect</strong>, tap <strong>Copy</strong> next to the connector address.</p>
+    <figure class="shot">
+      <img src="../connect-claude/img/1-copy-address.jpg" width="786" height="700" loading="lazy"
+        alt="The How to connect card in the Krestrel app. It shows the connector address with a Copy button, then short instructions for ChatGPT and Claude." />
+      <figcaption>The address is the same for everyone. It isn't a password.</figcaption>
+    </figure>
+
+    <h2 id="step-2">2. Turn on developer mode in ChatGPT</h2>
+    <p>Use ChatGPT on the web (chatgpt.com). Open <strong>Settings</strong>, then the section for apps or
+      connectors, then <strong>Advanced settings</strong>, and turn on <strong>Developer mode</strong>.</p>
+
+    <h2 id="step-3">3. Create the Krestrel connector</h2>
+    <p>In the same section, choose <strong>Create</strong> (or <strong>Add</strong>) to make a new connector:</p>
+    <ul>
+      <li><strong>Name:</strong> Krestrel</li>
+      <li><strong>MCP server URL:</strong> paste the address you copied in step 1</li>
+      <li><strong>Authentication:</strong> OAuth. Leave any client ID and secret empty; ChatGPT registers itself
+        with Krestrel.</li>
+    </ul>
+    <p>Confirm that you trust the connector and create it. A Krestrel sign-in page opens. If it doesn't, open the
+      Krestrel connector and choose <strong>Connect</strong>.</p>
+
+    <h2 id="step-4">4. Sign in with your Krestrel account</h2>
+    <p>Enter the email and password you use in the Krestrel app, <strong>not</strong> your ChatGPT login. You can
+      also ask for a sign-in code by email. The page is on krestrel.com; check the address bar before you type your
+      password.</p>
+
+    <h2 id="step-5">5. Check it's ChatGPT, choose what it may see, then Allow</h2>
+    <p>First, check the top of the page. It should say <strong>Connect ChatGPT to Krestrel?</strong> with
+      <strong>Recognised: ChatGPT</strong>, and it should say it will return to <strong>chatgpt.com</strong>. If it
+      names anything else, or you didn't just start this yourself, choose <strong>Don't allow</strong>.</p>
+    <p>Then, for each child, choose what ChatGPT may do in each area: <strong>No access</strong>,
+      <strong>Read</strong>, or <strong>Read &amp; add</strong>. Untick a child to keep that child out completely.
+      Pick how long the connection lasts (30 days unless you change it), read the note under <strong>Before you
+      allow</strong>, then choose <strong>Allow</strong>. The consent page looks the same as in the
+      <a href="../connect-claude/#step-4">Claude guide</a>, with ChatGPT's name instead.</p>
+    <p>Once information reaches ChatGPT, OpenAI's privacy terms cover it, not Krestrel's.</p>
+
+    <h2 id="step-6">6. Check the connection in Krestrel</h2>
+    <p>Back in <strong>Settings → AI &amp; connected apps</strong>, ChatGPT now appears with what it may see and
+      when access ends. If it isn't there yet, pull down to refresh.</p>
+
+    <h2 id="using">Using Krestrel in ChatGPT</h2>
+    <p>In a new chat, turn Krestrel on from the tools or connectors menu under the message box if it isn't already,
+      then ask in plain words:</p>
+    <ul>
+      <li>"Using Krestrel, what has Maya eaten today, and how much protein is that so far?"</li>
+      <li>"Log a 120 ml bottle for Maya at 7:30 this morning."</li>
+      <li>"When is Maya's next appointment? Add a question for it about sleep."</li>
+      <li>"Here's Maya's lab report. Add the results to Krestrel." (They're saved as a draft you confirm in the app.)</li>
+    </ul>
+    <p>ChatGPT may ask you to confirm before it adds anything. See <a href="../../ai/">everything the connection can
+      and can't do</a>, and <a href="../../blog/ai-meal-logging/">how one parent logs meals this way</a>.</p>
+
+    <h2 id="trouble">If something goes wrong</h2>
+    <h3>I can't find developer mode or a way to add a connector</h3>
+    <p>Your ChatGPT plan may not include it, or your workspace admin may manage it. ChatGPT also moves these settings
+      from time to time; search ChatGPT's help for "developer mode".</p>
+    <h3>The sign-in page says "Krestrel can't connect to this app"</h3>
+    <p>Krestrel only connects to ChatGPT, Claude and AI apps running on your own computer. Go back, and don't sign in
+      from that link again. Start again from step 3 in your own ChatGPT account.</p>
+    <h3>The page says "AI apps are turned off" or "Ask your primary caregiver first"</h3>
+    <p>A primary caregiver needs to turn AI apps on for the family in <strong>Settings → AI &amp; connected
+      apps</strong>, or allow you under Circle.</p>
+    <h3>ChatGPT can't see a child or an area</h3>
+    <p>That child or area is set to <strong>No access</strong>, or you only gave <strong>Read</strong> and asked it to
+      add something. Change it in Krestrel under <strong>Settings → AI &amp; connected apps → Change access</strong>, then
+      start a new chat.</p>
+    <h3>How do I disconnect?</h3>
+    <p>In Krestrel, use <strong>Settings → AI &amp; connected apps → Disconnect</strong>. That takes effect right away.
+      You can also delete the connector in ChatGPT's settings. Read more in the
+      <a href="../../privacy/#ai-apps">Privacy Policy</a>.</p>
+
+    <p>Still stuck? Email <a class="mail" href="mailto:support@krestrel.com">support@krestrel.com</a>.</p>
+
+    <p style="margin-top:30px;"><a class="btn secondary" href="../#ai-apps">← Back to Support</a></p>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <nav>
+        <a href="../../features/">Features</a>
+        <a href="../../blog/">Blog</a>
+        <a href="../../privacy/">Privacy</a>
+        <a href="../../terms/">Terms</a>
+        <a href="../">Support</a>
+      </nav>
+      <span class="copy">© 2026 Krestrel</span>
+    </div>
+  </footer>
+</body>
+</html>
