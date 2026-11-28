@@ -1,23 +1,56 @@
 # metabolic-care-urls
 
-Public legal &amp; support site for the **Krestrel** app (formerly Metabolic Care), served via GitHub Pages.
-These are the URLs Apple App Review and Google Play require (Privacy Policy + Support),
-plus supporting pages.
+Marketing, legal and support site for the **Krestrel** app (formerly Metabolic Care), served via
+GitHub Pages at www.krestrel.com. It also hosts the URLs Apple App Review requires (Privacy Policy +
+Support), the OAuth consent page for the AI connection, and the invite fallback page.
 
 ## Pages
 
-| Page | Path | Public URL |
+| Page | Path | Notes |
 |---|---|---|
-| Home | `/` | https://baochicabowwow.github.io/metabolic-care-urls/ |
-| Privacy Policy | `/privacy/` | https://baochicabowwow.github.io/metabolic-care-urls/privacy/ |
-| Terms of Use | `/terms/` | https://baochicabowwow.github.io/metabolic-care-urls/terms/ |
-| Support | `/support/` | https://baochicabowwow.github.io/metabolic-care-urls/support/ |
-| Blog | `/blog/` | https://www.krestrel.com/blog/ |
-| Blog — Day start | `/blog/day-start-hour/` | https://www.krestrel.com/blog/day-start-hour/ |
-| Blog — Appointments | `/blog/appointment-management/` | https://www.krestrel.com/blog/appointment-management/ |
-| Blog — Protein (and lysine) | `/blog/tracking-lysine/` | https://www.krestrel.com/blog/tracking-lysine/ |
+| Home | `/` | Marketing homepage: download, features, AI, FAQ. Uses `assets/site.css`. |
+| Features | `/features/` | One section per feature, with anchors (`#protein`, `#diet`, `#feeds`, `#labs`, `#growth`, `#meds`, `#appointments`, `#health-log`, `#emergency`, `#circle`, `#ai`, `#reports`, `#everyday`). |
+| Works with AI | `/ai/` | Claude & ChatGPT connector landing page. |
+| Blog | `/blog/` | Index + posts in `blog/<slug>/`. Copy `blog/_template/` to start a post. |
+| Privacy Policy | `/privacy/` | App links here (`src/lib/legal.ts`). |
+| Terms of Use | `/terms/` | App links here. |
+| Support | `/support/` | App links here. Guides: `support/connect-claude/`, `support/connect-chatgpt/`. |
+| OAuth consent | `/oauth/consent/` | Used by the ChatGPT/Claude connection. Don't touch without testing the MCP sign-in. |
+| Invite fallback | `/invite/accept/` | Universal-link fallback for caregiver invites. |
 
-The app reads the Privacy and Support URLs from `src/lib/legal.ts` in the app repo.
+Public URLs are on the `www.krestrel.com` custom domain (`CNAME`).
+
+## Two stylesheets — keep them separate
+
+- `assets/style.css`: the original styles. **The app-facing pages depend on it** (privacy, terms,
+  support, oauth consent, invite). Don't restyle or rename its rules.
+- `assets/site.css`: the marketing design ("Warm Editorial"). Every class is prefixed `k-`.
+  Loaded by the homepage, `/features/`, `/ai/` and the blog (blog posts load both files).
+
+## Screenshots
+
+`assets/screens/<name>.webp` (+ `<name>-dark.webp`), 786 px wide, shown in a CSS phone frame
+(`.k-phone`, `object-fit: cover; object-position: top`). Pages pick light/dark with `<picture>`.
+Names: `today`, `diet`, `feeds`, `labs`, `growth`, `emergency`, `circle`, `ai`, `aiaccess`.
+
+> **The current images are drawn placeholders with a fictional child**, not real captures. Replace
+> them with iOS Simulator captures (iPhone 6.9", status bar at 9:41) of an account holding only
+> fictional data, resized to 786 px wide, same file names. No page changes are needed.
+> Regenerate `assets/og/*.png` (1200×630 share images) afterwards if their screens changed.
+
+## SEO and AI search
+
+- Every page: canonical URL, Open Graph/Twitter tags with a 1200×630 image in `assets/og/`, the
+  `apple-itunes-app` Smart App Banner meta, and JSON-LD (`Organization`, `WebSite`,
+  `MobileApplication`, `FAQPage`, `BreadcrumbList`, `BlogPosting`, `HowTo` as relevant).
+- Blog posts open with a **Key takeaways** box and use question-shaped H2s plus a visible FAQ that
+  matches the `FAQPage` JSON-LD. See `blog/_template/`.
+- `llms.txt` summarises the product for AI assistants; `robots.txt` allows AI search crawlers.
+- When adding a page: add it to `sitemap.xml` (with `lastmod`), `llms.txt`, and the blog index.
+- Feature list for writing posts: `docs/FEATURES_FOR_BLOG.md`. AI-directory promotion:
+  `docs/AI_PROMOTION.md`.
+- The App Store button is a stand-in styled like Apple's badge. Swap in the official badge SVG
+  from Apple's marketing tools when you have it; links carry `data-store-url` for easy search.
 
 ## Enable GitHub Pages (one time)
 
@@ -27,13 +60,6 @@ The app reads the Privacy and Support URLs from `src/lib/legal.ts` in the app re
 4. Wait ~1 minute, then confirm the URLs above load over **HTTPS**.
 
 `.nojekyll` is included so GitHub serves the files as-is.
-
-## SEO
-
-`robots.txt` and `sitemap.xml` sit at the repo root and reference the `www.krestrel.com`
-custom domain. When adding a page, add its URL to `sitemap.xml`. Blog posts live in
-`blog/<slug>/index.html`, carry a canonical URL, Open Graph/Twitter tags, and
-`BlogPosting` + `FAQPage` JSON-LD, and are linked from `blog/index.html` and the site nav.
 
 ## Support contact
 

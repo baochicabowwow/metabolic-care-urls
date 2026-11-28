@@ -1,0 +1,278 @@
+<!-- NOTE: byline is "Krestrel's founder". Replace with your name (and update the
+     JSON-LD author) before this goes live. Do not add clinical credentials unless held. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How I Use Claude to Log Meals on a Metabolic Diet | Krestrel</title>
+  <meta name="description" content="How a parent logs a child’s meals on a protein-restricted metabolic diet by telling Claude what they ate: how Krestrel matches foods, flags estimates and keeps the running protein total." />
+  <link rel="canonical" href="https://www.krestrel.com/blog/ai-meal-logging/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="apple-itunes-app" content="app-id=6784455861" />
+  <link rel="stylesheet" href="../../assets/style.css" />
+  <link rel="stylesheet" href="../../assets/site.css" />
+  <link rel="icon" href="../../assets/brand/icon.svg" type="image/svg+xml" />
+  <link rel="icon" href="../../assets/brand/favicon-32.png" sizes="32x32" />
+  <link rel="icon" href="../../assets/brand/favicon-16.png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="../../assets/brand/apple-touch-icon.png" />
+  <meta name="theme-color" content="#FBF6EF" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#101923" media="(prefers-color-scheme: dark)" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Krestrel" />
+  <meta property="og:title" content="How I Use Claude to Log Meals on a Metabolic Diet | Krestrel" />
+  <meta property="og:description" content="How a parent logs a child’s meals on a protein-restricted metabolic diet by telling Claude what they ate: how Krestrel matches foods, flags estimates and keeps the running protein total." />
+  <meta property="og:url" content="https://www.krestrel.com/blog/ai-meal-logging/" />
+  <meta property="og:image" content="https://www.krestrel.com/assets/og/ai-meal-logging.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How I Use Claude to Log Meals on a Metabolic Diet | Krestrel" />
+  <meta name="twitter:description" content="How a parent logs a child’s meals on a protein-restricted metabolic diet by telling Claude what they ate: how Krestrel matches foods, flags estimates and keeps the running protein total." />
+  <meta name="twitter:image" content="https://www.krestrel.com/assets/og/ai-meal-logging.png" />
+  <meta property="article:published_time" content="2026-11-28" />
+  <meta property="article:modified_time" content="2026-11-28" />
+  <meta property="article:section" content="AI &amp; connectors" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How I Use Claude to Log My Child’s Meals in Seconds",
+  "description": "How a parent logs a child’s meals on a protein-restricted metabolic diet by telling Claude what they ate: how Krestrel matches foods, flags estimates and keeps the running protein total.",
+  "datePublished": "2026-11-28",
+  "dateModified": "2026-11-28",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "name": "Krestrel founder"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Krestrel",
+    "url": "https://www.krestrel.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.krestrel.com/assets/brand/web-icon-512.png"
+    }
+  },
+  "image": "https://www.krestrel.com/assets/og/ai-meal-logging.png",
+  "articleSection": "AI & connectors",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.krestrel.com/blog/ai-meal-logging/"
+  },
+  "about": {
+    "@id": "https://www.krestrel.com/#app"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.krestrel.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.krestrel.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How I Use Claude to Log My Child’s Meals in Seconds",
+      "item": "https://www.krestrel.com/blog/ai-meal-logging/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can Claude log a meal straight into Krestrel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. With Read & add access to diet, Claude looks each food up in your child’s Krestrel food list and logs the meal. It goes straight into the meal log and counts toward today’s protein, and you can change or delete it in the app."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if Claude isn’t sure which food I meant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It doesn’t guess. If a name could mean several foods, or only close spellings come back, nothing is saved and Claude asks you which one you meant."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if a food isn’t in my child’s food list?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude can add it, but only with a protein value and where that number comes from, such as the package label or a named reference like USDA FoodData Central. It never invents a protein value."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this work with ChatGPT too?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The same Krestrel connection works in ChatGPT; the setup steps are slightly different."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Claude change my child’s protein range?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The connection has no tool that changes a protein range, formula, medicine or dose. Those stay between you and your care team."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Log a meal in Krestrel by telling Claude what your child ate",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "text": "Connect Krestrel to Claude and give it Read & add access to your child’s diet."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Tell Claude what your child ate, with grams where you weighed food and the meal and time."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Claude finds each food in your Krestrel food list, logs the meal and says which amounts it estimated."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Check the meal in the Krestrel app and adjust any amount if needed."
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="k-skip" href="#main">Skip to content</a>
+<header class="k-header">
+  <div class="k-wrap">
+    <a class="k-logo" href="../../"><img src="../../assets/brand/icon.svg" alt="" width="36" height="36" />Krestrel</a>
+    <nav class="k-nav" aria-label="Main"><a href="../../features/">Features</a><a href="../../ai/">Works with AI</a><a href="../../blog/" aria-current="page">Blog</a><a href="../../support/">Support</a></nav>
+    <a class="k-btn" href="https://apps.apple.com/us/app/krestrel/id6784455861" data-store-url>Get the app</a>
+  </div>
+</header>
+<main id="main" class="wrap">
+  <article>
+    <nav aria-label="Breadcrumb"><ol class="k-crumbs"><li><a href="../../">Home</a></li><li><a href="../">Blog</a></li><li aria-current="page">AI &amp; connectors</li></ol></nav>
+    <h1>How I Use Claude to Log My Child’s Meals in Seconds</h1>
+    <p class="updated">By <strong>Krestrel’s founder</strong> · Published 28 November 2026 · 7 min read</p>
+    <aside class="k-takeaways" aria-labelledby="tldr"><h2 id="tldr">Key takeaways</h2><ul><li>Tell Claude what your child ate in plain words; it finds each food in your Krestrel food list and logs the meal.</li><li>It only logs foods it’s sure about, asks when a name is ambiguous, and says which amounts it estimated.</li><li>The meal counts toward today’s protein right away, and you can change or delete it in the app.</li><li>Claude can’t change protein ranges, formula, medicines or doses, and you choose exactly what it can see.</li></ul></aside>
+
+    <p>I built Krestrel because our kitchen had a notebook, a calculator, a kitchen scale and a
+      phone, and all four were needed every time our child ate. The protein range from the metabolic
+      clinic was simple on paper. Turning a messy toddler lunch into grams of protein, three times a day
+      plus snacks, was not.</p>
+
+    <p>Krestrel made the arithmetic disappear. The part that still took effort was the tapping: search a
+      food, pick raw or cooked, type the grams, repeat for every food on the plate, while a hungry
+      toddler is throwing peas. These days, most of our meals are logged with one sentence to Claude.
+      Here is what that looks like, and what happens behind it.</p>
+
+    <h2>What does logging a meal with Claude look like?</h2>
+    <p>This is an example conversation with a fictional child, Maya, using the same Krestrel tools
+      a real connection uses.</p>
+    <div class="k-chat" role="figure" aria-label="Example conversation">
+      <div class="u">Log lunch for Maya at 12:30: 40 g banana, 30 g white rice and a spoonful of sweet potato.</div>
+      <span class="t">Krestrel · search foods</span>
+      <span class="t">Krestrel · log meal</span>
+      <div class="a">Logged lunch for Maya at 12:30:<br>• Banana, raw — 40 g, 0.4 g protein<br>• Rice, white, cooked — 30 g, 0.8 g<br>• Sweet potato, boiled — 15 g, 0.2 g (estimated: I used one tablespoon for “a spoonful”)<br><br>Lunch adds 1.4 g. Maya is at 7.8 g today. Her care team’s range is 10–12 g, so 2.2 g to the low end and 4.2 g before the top. You can change any amount in the Krestrel app.</div>
+      <div class="u">She also had a few bites of dragon fruit.</div>
+      <div class="a">Dragon fruit isn’t in Maya’s food list yet. Do you have a package label with its protein per 100 g? If not, I can add it using the value from USDA FoodData Central’s entry for raw pitaya and tell you the number first. How many grams did she have?</div>
+      <p class="note">Example conversation with a fictional child. Values are reference figures and may not match your products.</p>
+    </div>
+
+    <h2>What happens behind that one sentence?</h2>
+    <ol>
+      <li><strong>Claude looks each food up in your child’s Krestrel food list</strong> with the
+        <em>search foods</em> tool. It gets the protein per 100 g and any named servings (“1 slice = 28 g”).</li>
+      <li><strong>It only logs foods it’s sure about.</strong> If “rice” could mean several
+        foods, nothing is saved and Claude asks you which one. Close spellings are never logged without asking.</li>
+      <li><strong>It logs the meal</strong> with the <em>log meal</em> tool: the meal type, the time and each food with its grams.
+        Where you didn’t give grams it uses the food’s usual serving, and it tells you which amounts were estimated.</li>
+      <li><strong>The meal lands in Krestrel</strong> exactly like one you logged by hand. It counts toward today’s
+        protein, “g left today” updates on every caregiver’s phone, and you can change or delete it in the app.</li>
+      <li><strong>A new food needs a source.</strong> Claude can add a food that isn’t in your list only with a protein
+        value and where it came from, such as the package label or a named reference. It never makes one up.</li>
+    </ol>
+
+    <h2>How do I get accurate results?</h2>
+    <ul>
+      <li><strong>Give grams when you weighed it.</strong> “40 g banana” beats “some banana”. For the
+        foods that carry most of the protein, keep using the scale.</li>
+      <li><strong>Name the meal and the time</strong>, especially when you’re logging after the fact:
+        “dinner at 6pm”.</li>
+      <li><strong>Say raw or cooked</strong> when it matters. Cooked rice and dry rice are very different per gram.</li>
+      <li><strong>Ask the follow-up.</strong> “How much protein is left today?” gets you the running balance
+        against the range your care team set.</li>
+      <li><strong>Glance at the app</strong> once the meal is logged, at least until you trust how your family’s
+        phrases get matched.</li>
+    </ul>
+
+    <h2>What won’t Claude do?</h2>
+    <ul>
+      <li>It can’t change a protein range, formula, medicine or dose, and it won’t suggest changes. Those
+        questions go to your care team.</li>
+      <li>It can’t edit or delete anything. Corrections happen in the app.</li>
+      <li>It only sees the children and areas you allowed. Logging meals needs <strong>Read &amp; add</strong>
+        on diet; you can give Read on labs and nothing at all on everything else.</li>
+      <li>Every request appears under <strong>Recent AI activity</strong> in Krestrel, and one switch turns AI apps
+        off for the whole family.</li>
+    </ul>
+
+    <h2>How do I set it up?</h2>
+    <p>It takes about three minutes: copy the connector address in Krestrel (Settings → AI &amp; connected apps),
+      add it as a custom connector in Claude, sign in, choose what Claude may see, and allow. The
+      <a href="../../support/connect-claude/">step-by-step guide for Claude</a> has screenshots, and there is a
+      <a href="../../support/connect-chatgpt/">guide for ChatGPT</a> too. Read more about
+      <a href="../../ai/">what the connection can and can’t do</a>, or see
+      <a href="../../features/#diet">meal logging in the app</a>.</p>
+
+    <div class="callout warn"><strong>Krestrel is a record-keeping tool, not medical advice.</strong> Reference
+      values come from public food-composition tables and may not match specific products. Confirm values and your
+      child’s plan with your metabolic dietitian.</div>
+    <h2 id="faq">Frequently asked questions</h2><h3>Can Claude log a meal straight into Krestrel?</h3><p>Yes. With Read &amp; add access to diet, Claude looks each food up in your child’s Krestrel food list and logs the meal. It goes straight into the meal log and counts toward today’s protein, and you can change or delete it in the app.</p><h3>What if Claude isn’t sure which food I meant?</h3><p>It doesn’t guess. If a name could mean several foods, or only close spellings come back, nothing is saved and Claude asks you which one you meant.</p><h3>What if a food isn’t in my child’s food list?</h3><p>Claude can add it, but only with a protein value and where that number comes from, such as the package label or a named reference like USDA FoodData Central. It never invents a protein value.</p><h3>Does this work with ChatGPT too?</h3><p>Yes. The same Krestrel connection works in ChatGPT; the setup steps are slightly different.</p><h3>Can Claude change my child’s protein range?</h3><p>No. The connection has no tool that changes a protein range, formula, medicine or dose. Those stay between you and your care team.</p>
+    <div class="k-inline-cta"><img src="../../assets/brand/web-icon-512.png" alt="" width="44" height="44" /><p>Krestrel keeps the protein total, formula, labs and the whole care log in one place.</p><a class="k-store" href="https://apps.apple.com/us/app/krestrel/id6784455861" data-store-url aria-label="Download Krestrel on the App Store"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="18" r="1.2" fill="currentColor"/></svg><span><small>Download on the</small><b>App Store</b></span></a></div>
+    <section class="k-related" aria-labelledby="rel"><h2 id="rel">Keep reading</h2><ul class="k-posts"><li class="k-post"><a class="k-thumb t-lilac" href="../../blog/claude-chatgpt-care-log/" tabindex="-1" aria-hidden="true"><img src="../../assets/screens/aiaccess.webp" alt="" width="786" height="1702" loading="lazy" /></a>
+<div class="k-body"><span class="k-cat">AI &amp; connectors</span><h3><a href="../../blog/claude-chatgpt-care-log/">How to Ask Claude or ChatGPT About Your Child’s Care Log, Safely</a></h3><p>What an AI assistant can and can’t do with your child’s Krestrel records, how to choose what it sees, and prompts that work.</p><span class="k-when">28 November 2026 · 6 min read</span></div></li><li class="k-post"><a class="k-thumb t-coral" href="../../blog/tracking-lysine/" tabindex="-1" aria-hidden="true"><img src="../../assets/screens/diet.webp" alt="" width="786" height="1702" loading="lazy" /></a>
+<div class="k-body"><span class="k-cat">Diet &amp; protein</span><h3><a href="../../blog/tracking-lysine/">Counting Protein (and Lysine) Without Losing the Plot</a></h3><p>Treating the daily range as a budget, weighing what matters, where amino-acid estimates fit, and a history that never rewrites itself.</p><span class="k-when">12 August 2026 · 7 min read</span></div></li></ul></section>
+  </article>
+</main>
+<footer class="k-footer">
+  <div class="k-wrap">
+    <div>
+      <a class="k-logo" href="../../"><img src="../../assets/brand/icon.svg" alt="" width="36" height="36" />Krestrel</a>
+      <p style="margin:10px 0 14px;font-size:15px;max-width:32ch">The care log for families of children with inherited metabolic conditions.</p>
+      <a class="k-store" href="https://apps.apple.com/us/app/krestrel/id6784455861" data-store-url aria-label="Download Krestrel on the App Store"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="18" r="1.2" fill="currentColor"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
+    </div>
+    <div><h4>Product</h4><ul><li><a href="../../features/">Features</a></li><li><a href="../../ai/">Works with Claude &amp; ChatGPT</a></li><li><a href="../../blog/">Blog</a></li><li><a href="../../blog/krestrel-vs-flok-vs-metabolic-diet-app/">Compare apps</a></li></ul></div>
+    <div><h4>Help</h4><ul><li><a href="../../support/">Support</a></li><li><a href="../../support/connect-claude/">Connect Claude</a></li><li><a href="../../support/connect-chatgpt/">Connect ChatGPT</a></li><li><a href="mailto:support@krestrel.com">support@krestrel.com</a></li></ul></div>
+    <div><h4>Legal</h4><ul><li><a href="../../privacy/">Privacy policy</a></li><li><a href="../../terms/">Terms of use</a></li></ul></div>
+    <p class="k-fine">Krestrel is a record-keeping tool, not medical advice. It doesn’t recommend diets, restrictions or amounts. Nutrient figures are reference values from public food-composition tables (USDA FoodData Central and others) and may not match specific products. Always confirm values and your child’s plan with your metabolic dietitian and care team. &copy; 2026 Krestrel.</p>
+  </div>
+</footer>
+</body>
+</html>

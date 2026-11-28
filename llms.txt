@@ -1,0 +1,42 @@
+# Krestrel
+
+> Krestrel is a free iPhone and iPad app for parents and caregivers of children with inherited metabolic conditions such as phenylketonuria (PKU), maple syrup urine disease (MSUD), classical homocystinuria (HCU), glutaric aciduria type 1 (GA1), isovaleric acidemia (IVA) and pyridoxine-dependent epilepsy (PDE). It keeps the whole care log in one place, built around the metabolic diet: daily protein against the range the family's metabolic dietitian sets, meals, formula and feeds, lab results, medicines, growth, appointments, a health log and an emergency plan, shared with every caregiver. It connects to Claude and ChatGPT. No ads, no third-party tracking.
+
+Krestrel is a record-keeping tool, not medical advice. It never recommends diets, protein targets, formulas or doses; the care team sets those. Nutrient figures are reference values from public food-composition tables and may not match specific products.
+
+- App Store: https://apps.apple.com/us/app/krestrel/id6784455861
+- Price: free; no ads
+- Platforms: iPhone and iPad (iOS 16 or later). English only.
+- Publisher contact: support@krestrel.com
+
+## Key facts
+
+- Protein tracking: total protein per day against a minimum, maximum or both, per kilogram (worked out from the child's latest weight) or per day. Shown as a neutral band, never a red/green verdict.
+- Amino acids: shown only as estimates (for example lysine, phenylalanine, leucine) from a mg-per-gram-of-protein factor the dietitian provides; no limits attached.
+- Food data: USDA FoodData Central, Canadian Nutrient File, UK CoFID, German BLS and French Ciqual, with raw and cooked forms, custom foods, package-label entry and CSV import. Values are frozen onto each logged meal so history never changes.
+- Formula and feeds: breast milk, formula and metabolic formula by volume, protein from the formula concentration; nursing, sleep, pumping and tummy-time timers shared across caregivers; configurable day-start hour for overnight feeds.
+- Labs: results against the clinic's target range with trend charts; PDF import (text PDFs on the server, scanned PDFs on device) with every value reviewed before saving.
+- Growth: WHO percentile curves from birth to five years.
+- Also: medicines and doses, appointments with questions carried forward, health log (seizures, vomiting, hypoglycemia, fever, hospital stays), emergency/sick-day plan with a shareable ER letter that works offline, timeline, reports, CSV export (de-identified by default), iPhone widgets, offline use, dark mode.
+- Care circle: multiple caregivers; primary caregivers set per-person permissions (logging, reports, clinical changes, private areas, AI apps).
+- AI connectors: Krestrel works with Claude and ChatGPT over the Model Context Protocol. Families choose each child and area and No access, Read, or Read & add. Assistants can look up care summaries, diet, foods, labs, medicines, appointments and the emergency plan, and can log meals, feeds, doses and health events, add appointments and questions, and propose lab results (saved as drafts the parent confirms). They cannot edit, delete, change settings, or change protein ranges, formulas, medicines or doses. Every request appears in Recent AI activity.
+
+## Pages
+
+- [Home](https://www.krestrel.com/): overview and download
+- [Features](https://www.krestrel.com/features/): every feature in detail
+- [Works with Claude & ChatGPT](https://www.krestrel.com/ai/): what the AI connection does and how to set it up
+- [Connect Claude](https://www.krestrel.com/support/connect-claude/): step-by-step guide
+- [Connect ChatGPT](https://www.krestrel.com/support/connect-chatgpt/): step-by-step guide
+- [Support](https://www.krestrel.com/support/): help and contact
+- [Privacy policy](https://www.krestrel.com/privacy/)
+- [Terms of use](https://www.krestrel.com/terms/)
+
+## Blog
+
+- [How I use Claude to log my child's meals in seconds](https://www.krestrel.com/blog/ai-meal-logging/)
+- [Krestrel vs flok Health vs the Metabolic Diet App](https://www.krestrel.com/blog/krestrel-vs-flok-vs-metabolic-diet-app/)
+- [How to ask Claude or ChatGPT about your child's care log, safely](https://www.krestrel.com/blog/claude-chatgpt-care-log/)
+- [Why a 2am feed shouldn't count as tomorrow](https://www.krestrel.com/blog/day-start-hour/)
+- [Walking into the appointment prepared](https://www.krestrel.com/blog/appointment-management/)
+- [Counting protein (and lysine) without losing the plot](https://www.krestrel.com/blog/tracking-lysine/)
