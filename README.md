@@ -49,8 +49,9 @@ Names: `today`, `diet`, `feeds`, `labs`, `growth`, `emergency`, `circle`, `ai`, 
 - When adding a page: add it to `sitemap.xml` (with `lastmod`), `llms.txt`, and the blog index.
 - Feature list for writing posts: `docs/FEATURES_FOR_BLOG.md`. AI-directory promotion:
   `docs/AI_PROMOTION.md`.
-- The App Store button is a stand-in styled like Apple's badge. Swap in the official badge SVG
-  from Apple's marketing tools when you have it; links carry `data-store-url` for easy search.
+- The App Store button is Apple's official badge: `assets/brand/app-store-badge-black.svg` on light
+  backgrounds and `-white.svg` on dark ones (switched with `<picture>` for dark mode). Don't recolour
+  or redraw it; keep it at least 40 px tall. Store links carry `data-store-url` for easy search.
 
 ## Enable GitHub Pages (one time)
 

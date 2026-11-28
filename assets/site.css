@@ -92,13 +92,13 @@ body.k :focus-visible, .k-header :focus-visible, .k-footer :focus-visible { outl
 }
 
 /* ---------- App Store button ---------- */
-/* Stand-in for Apple's official "Download on the App Store" badge. Replace the
-   inner markup with the official SVG from Apple's marketing tools when available. */
-.k-store { display: inline-flex; align-items: center; gap: 10px; background: var(--k-badge); color: var(--k-badge-fg) !important; border-radius: 12px; padding: 9px 20px 9px 14px; line-height: 1.05; text-decoration: none !important; font-family: var(--k-font); }
-.k-store svg { width: 24px; height: 24px; flex: none; }
-.k-store small { display: block; font-size: 11.5px; font-weight: 600; opacity: 0.85; }
-.k-store b { display: block; font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
-.k-store:hover { filter: brightness(1.15); }
+/* Apple's official "Download on the App Store" badge (assets/brand/app-store-badge-*.svg).
+   Apple's rules: use the artwork unaltered, at least 40px tall on screen, with clear space
+   of at least a quarter of its height around it. */
+.k-store { display: inline-flex; line-height: 0; border-radius: 9px; }
+.k-store img { display: block; height: 50px; width: auto; }
+.k-store:hover { opacity: 0.88; }
+@media (max-width: 480px) { .k-store img { height: 44px; } }
 .k-meta { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14.5px; font-weight: 700; color: var(--k-muted); margin: 0; padding: 0; list-style: none; }
 .k-meta li::before { content: "✓ "; color: var(--k-mint); }
 
@@ -238,7 +238,6 @@ body.k :focus-visible, .k-header :focus-visible, .k-footer :focus-visible { outl
 .k-cta { background: var(--k-cta); color: var(--k-cta-fg); border-radius: 36px; padding: clamp(32px, 5vw, 56px) clamp(24px, 5vw, 60px); display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; margin-block: 24px 48px; position: relative; overflow: hidden; }
 .k-cta .k-h2 { margin: 0; color: var(--k-cta-fg); max-width: 22ch; }
 .k-cta p { margin: 8px 0 0; color: var(--k-cta-fg); opacity: 0.85; font-weight: 700; }
-.k-cta .k-store { background: #FFFFFF; color: #111820 !important; }
 
 /* ---------- footer ---------- */
 .k-footer { border-top: 1px solid var(--k-line); font-family: var(--k-font); color: var(--k-muted); background: var(--k-bg); }
